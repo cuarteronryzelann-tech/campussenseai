@@ -1,0 +1,61 @@
+feedback_id,date,location,feedback
+FB0053,2026-06-02,Cafeteria,Staff at the cafeteria counter are always polite and quick with orders.
+FB0034,2026-06-07,Restroom,"Restroom floors are often wet and slippery, could be a safety hazard."
+FB0003,2026-06-09,Library,Several power outlets near the reading tables are broken and haven't been fixed in weeks.
+FB0044,2026-06-09,Library,I really appreciate how quiet and well-organized the library has become this semester.
+FB0032,2026-06-12,Library,"Book collection in the CS section is outdated, most titles are from over ten years ago."
+FB0036,2026-06-15,Library,Staff at the library help desk were very friendly and helped me find resources quickly.
+FB0056,2026-06-15,Restroom,"The renovated restrooms in the new wing are clean, modern, and well-stocked."
+FB0016,2026-06-18,Classroom,"Electrical outlets near the front of the room don't work, we can't charge our laptops."
+FB0029,2026-06-18,Campus Entrance,Guards at the entrance are courteous and help visitors find their way.
+FB0014,2026-06-19,Wi-Fi Areas,New mesh Wi-Fi system installed this semester covers the whole campus well.
+FB0037,2026-06-20,Library,"Air conditioning in the library is too weak during afternoon hours, it gets uncomfortably warm."
+FB0039,2026-06-21,Campus Entrance,New signage at the campus entrance makes navigation much clearer for visitors.
+FB0004,2026-06-28,Cafeteria,"Cafeteria ran out of food options by 1pm, students who arrive later have no choices left."
+FB0008,2026-06-28,Computer Laboratory,Several monitors in Lab 3 have dead pixels and flickering screens that strain the eyes.
+FB0028,2026-06-29,Restroom,"Restroom ventilation is poor, there's a persistent unpleasant smell most days."
+FB0017,2026-07-02,Classroom,The renovated classroom with new desks is much more comfortable than before.
+FB0050,2026-07-03,Student Lounge,"The lounge is a comfortable place to relax between classes, well maintained overall."
+FB0015,2026-07-04,Wi-Fi Areas,"Campus Wi-Fi disconnects constantly in the engineering building, very frustrating."
+FB0021,2026-07-04,Wi-Fi Areas,IT support responded quickly when I reported the Wi-Fi outage near the cafeteria.
+FB0002,2026-07-05,Computer Laboratory,New lab computers installed this semester are fast and run our software smoothly.
+FB0060,2026-07-05,Student Lounge,Vending machines in the student lounge are frequently out of stock or broken.
+FB0007,2026-07-11,Computer Laboratory,"Software licenses expired on several machines, we can't run our development tools anymore."
+FB0027,2026-07-17,Classroom,Projector in Room 204 keeps flickering and shutting off in the middle of lectures.
+FB0046,2026-07-19,Cafeteria,The new vegetarian options at the cafeteria are delicious and reasonably priced.
+FB0045,2026-07-20,Campus Entrance,"Sidewalk near the campus entrance is cracked and uneven, a tripping hazard."
+FB0011,2026-07-21,Campus Entrance,There is no shade or waiting area near the entrance during hot weather.
+FB0001,2026-07-22,Wi-Fi Areas,"Wi-Fi speed near the library is fast and reliable, great for downloading resources."
+FB0026,2026-07-22,Library,"The library Wi-Fi keeps disconnecting every few minutes, making it hard to research."
+FB0024,2026-07-25,Parking Area,"Drainage in the parking lot is poor, it floods heavily after any rain."
+FB0042,2026-07-25,Cafeteria,"Seating space in the cafeteria is not enough during peak hours, many students eat standing."
+FB0013,2026-07-29,Library,The new self-checkout kiosk for borrowing books is fast and very convenient.
+FB0048,2026-07-30,Parking Area,Security guards at the parking entrance are attentive and check IDs properly.
+FB0010,2026-08-03,Computer Laboratory,The lab technician replaced our mouse and keyboard right away when I reported the issue.
+FB0031,2026-08-03,Wi-Fi Areas,The IT department upgraded the Wi-Fi routers and the connection is much more stable now.
+FB0030,2026-08-05,Classroom,"The classroom chairs are broken and uncomfortable, some have loose screws."
+FB0049,2026-08-07,Student Lounge,"Trash isn't collected often enough in the lounge, bins overflow by midday."
+FB0020,2026-08-08,Classroom,The air conditioning unit makes a loud rattling noise that distracts during lectures.
+FB0058,2026-08-08,Cafeteria,The cafeteria added self-service water stations which is a nice convenient touch.
+FB0051,2026-08-10,Computer Laboratory,"Air conditioning in the computer lab is excellent, keeps the equipment and students cool."
+FB0019,2026-08-11,Campus Entrance,The entrance was recently repainted and looks much more welcoming now.
+FB0005,2026-08-12,Cafeteria,"Lines at the cafeteria during lunch hour are extremely long, sometimes over 30 minutes."
+FB0023,2026-08-14,Wi-Fi Areas,Too many students on the same Wi-Fi network causes it to slow down significantly.
+FB0025,2026-08-14,Wi-Fi Areas,"Connection near the gymnasium is nonexistent, we can't access online resources there."
+FB0043,2026-08-16,Computer Laboratory,The lab is well-maintained and the seats are comfortable for long programming sessions.
+FB0047,2026-08-16,Library,"There aren't enough charging stations for laptops in the library, especially near exam week."
+FB0038,2026-08-20,Classroom,"Lighting in the classroom is dim, making it hard to read slides from the back row."
+FB0012,2026-08-22,Parking Area,New parking lines and signage make it much easier to find a spot now.
+FB0009,2026-08-23,Student Lounge,The redesigned student lounge with bean bags and plants feels very inviting.
+FB0041,2026-08-27,Parking Area,"Parking area is full by 8am, students have to park far off campus and walk in."
+FB0054,2026-08-27,Computer Laboratory,"Internet connection in the computer lab drops constantly, especially during peak hours."
+FB0057,2026-08-27,Wi-Fi Areas,Wi-Fi in the dormitory areas is unreliable especially in the evening.
+FB0006,2026-08-31,Classroom,"Acoustics in the lecture hall are poor, it's hard to hear the professor from the back."
+FB0055,2026-09-01,Campus Entrance,"Traffic flow at the entrance is chaotic, tricycles and cars block each other constantly."
+FB0018,2026-09-04,Student Lounge,Wi-Fi signal in the student lounge is weak compared to other parts of campus.
+FB0022,2026-09-04,Parking Area,"Lighting in the parking area at night is very dim, feels unsafe walking to the car."
+FB0033,2026-09-05,Wi-Fi Areas,Wi-Fi coverage doesn't reach the outdoor benches near the quadrangle at all.
+FB0059,2026-09-05,Restroom,Restroom on the third floor has a broken faucet that has been leaking for days.
+FB0040,2026-09-10,Classroom,New whiteboards installed in the building are a huge improvement for lectures.
+FB0035,2026-09-19,Student Lounge,"The student lounge sofas are torn and worn out, they need replacement."
+FB0052,2026-09-19,Classroom,"Classroom is too small for the number of students enrolled, we barely have space."
