@@ -42,11 +42,11 @@ a real campus administration office could act on.
 - Campus administration / facilities management staff
 - Student affairs offices reviewing suggestion-box or survey data
 - IT support teams tracking recurring technical complaints
-- CS 315 instructors/evaluators reviewing the project
+
 
 ## 6. Features
 
-- Bundled 60-record CSV dataset loaded automatically (no upload needed)
+- Bundled 566-record CSV dataset loaded automatically (no upload needed)
 - Automatic Pandas-based data cleaning (duplicates, missing values, date parsing, whitespace)
 - GenAI-powered per-feedback analysis: sentiment, category, severity, keywords, main issue,
   summary, suggested action — returned as structured JSON
