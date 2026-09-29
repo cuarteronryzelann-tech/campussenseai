@@ -1,7 +1,7 @@
 """
 ai_analysis.py
 --------------
-GenAI (Google Gemini API) integration for CampusSense AI.
+GenAI (Hugging Face Inference API) integration for CampusSense AI.
 
 This module is responsible for:
   1. Analyzing individual feedback entries and extracting structured data
@@ -10,19 +10,22 @@ This module is responsible for:
   3. Answering natural-language questions about the dataset through the
      "CampusSense Assistant" chatbot.
 
-Uses Google's Gemini 3.6 Flash model via the official `google-genai` SDK.
-The Gemini API key is NEVER hardcoded here - it is read from the
-GEMINI_API_KEY environment variable (loaded from a local .env file via
-python-dotenv in app.py). If the key is missing, functions raise a
+Uses open-source chat models hosted on Hugging Face via the official
+`huggingface_hub` SDK. Models are tried in order (MODEL_CHAIN): if one is
+unavailable, rate-limited, or gated, the next one is used automatically.
+
+The Hugging Face token is NEVER hardcoded here - it is read from the
+HF_TOKEN environment variable (loaded from a local .env file via
+python-dotenv in app.py). If the token is missing, functions raise a
 clear AIAnalysisError instead of crashing the app.
 """
 
 import os
+import re
 import json
 
 import pandas as pd
-from google import genai
-from google.genai import types
+from huggingface_hub import InferenceClient
 
 # Allowed values the AI must choose from. Keeping these as constants means
 # we can validate the AI's JSON output and fall back safely if it drifts.
@@ -34,12 +37,17 @@ VALID_CATEGORIES = [
 ]
 VALID_SEVERITIES = ["Low", "Medium", "High"]
 
-MODEL_NAME = "gemini-3.6-flash"  # Google's fast, cost-efficient Gemini 3 model - good fit for a classroom project
+# Models are tried in this order; the first one that responds is used.
+MODEL_CHAIN = [
+    "Qwen/Qwen2.5-7B-Instruct",
+    "Qwen/Qwen3-8B",
+    "meta-llama/Llama-3.1-8B-Instruct",
+]
+MODEL_NAME = MODEL_CHAIN[0]
 
-# Gemini 3 models use "thinking levels" instead of temperature/top_p/top_k.
-# LOW keeps per-feedback classification fast and cheap since this is a
-# straightforward extraction task, not deep multi-step reasoning.
-CLASSIFICATION_THINKING = types.ThinkingConfig(thinking_level=types.ThinkingLevel.LOW)
+# Index of the model in MODEL_CHAIN that last worked, so we don't keep
+# retrying a model that already failed on every single row.
+_active_model_index = 0
 
 
 class AIAnalysisError(Exception):
@@ -47,18 +55,72 @@ class AIAnalysisError(Exception):
     pass
 
 
-def get_client() -> genai.Client:
+def get_hf_token() -> str | None:
+    """Return the Hugging Face token from the environment (or None)."""
+    return os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+
+def get_client() -> InferenceClient:
     """
-    Build a Gemini API client using the API key from the environment.
-    Raises AIAnalysisError with a friendly message if the key is missing.
+    Build a Hugging Face Inference client using the token from the environment.
+    Raises AIAnalysisError with a friendly message if the token is missing.
     """
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
+    token = get_hf_token()
+    if not token:
         raise AIAnalysisError(
-            "GEMINI_API_KEY is not set. Add it to your .env file "
+            "HF_TOKEN is not set. Add it to your .env file "
             "(see README.md) before running analysis."
         )
-    return genai.Client(api_key=api_key)
+    return InferenceClient(api_key=token, timeout=120)
+
+
+def _clean_model_text(text: str) -> str:
+    """Remove <think>...</think> reasoning blocks (Qwen3) and surrounding whitespace."""
+    text = re.sub(r"<think>.*?</think>", "", text or "", flags=re.DOTALL)
+    return text.strip()
+
+
+def _chat(client: InferenceClient, system: str, user: str,
+          max_tokens: int = 500, temperature: float = 0.2) -> str:
+    """
+    Send one chat request, walking down MODEL_CHAIN until a model answers.
+    Returns the model's cleaned text. Raises AIAnalysisError if every model fails.
+    """
+    global _active_model_index
+    errors = []
+
+    for idx in range(_active_model_index, len(MODEL_CHAIN)):
+        model = MODEL_CHAIN[idx]
+        # Qwen3 is a "thinking" model - /no_think keeps answers fast and short.
+        user_msg = user + " /no_think" if "Qwen3" in model else user
+        try:
+            response = client.chat_completion(
+                model=model,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user_msg},
+                ],
+                max_tokens=max_tokens,
+                temperature=temperature,
+            )
+            text = _clean_model_text(response.choices[0].message.content)
+            if not text:
+                raise ValueError("empty response")
+            _active_model_index = idx  # remember the working model
+            return text
+        except Exception as exc:  # network, auth, gated model, rate limit, etc.
+            errors.append(f"{model}: {exc}")
+
+    raise AIAnalysisError("All Hugging Face models failed. " + " | ".join(errors))
+
+
+def _extract_json(text: str) -> dict:
+    """Pull the first JSON object out of a model reply (tolerates code fences / chatter)."""
+    text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.MULTILINE).strip()
+    first, last = text.find("{"), text.rfind("}")
+    if first == -1 or last == -1 or last <= first:
+        raise json.JSONDecodeError("No JSON object found", text, 0)
+    return json.loads(text[first:last + 1])
 
 
 ANALYSIS_SYSTEM_PROMPT = """You are CampusSense AI, an assistant that analyzes college campus
@@ -97,9 +159,9 @@ def _build_fallback_result(error_message: str) -> dict:
     }
 
 
-def analyze_feedback(client: genai.Client, feedback_text: str) -> dict:
+def analyze_feedback(client: InferenceClient, feedback_text: str) -> dict:
     """
-    Send a single feedback entry to the Gemini API and return a structured dict.
+    Send a single feedback entry to the Hugging Face model and return a structured dict.
     Never raises for a single-row failure - instead returns a fallback result
     with an "analysis_error" key so the caller can surface it without crashing
     the whole batch.
@@ -108,21 +170,21 @@ def analyze_feedback(client: genai.Client, feedback_text: str) -> dict:
         return _build_fallback_result("Empty feedback text.")
 
     try:
-        response = client.models.generate_content(
-            model=MODEL_NAME,
-            contents=f"Feedback: {feedback_text}",
-            config=types.GenerateContentConfig(
-                system_instruction=ANALYSIS_SYSTEM_PROMPT,
-                response_mime_type="application/json",
-                thinking_config=CLASSIFICATION_THINKING,
-            ),
+        raw_content = _chat(
+            client,
+            system=ANALYSIS_SYSTEM_PROMPT,
+            user=f"Feedback: {feedback_text}",
+            max_tokens=400,
+            temperature=0.1,
         )
-        raw_content = response.text
-        result = json.loads(raw_content)
+        result = _extract_json(raw_content)
     except json.JSONDecodeError:
         return _build_fallback_result("AI returned an invalid (non-JSON) response.")
     except Exception as exc:  # covers network errors, auth errors, rate limits, etc.
         return _build_fallback_result(f"API error: {exc}")
+
+    if not isinstance(result, dict):
+        return _build_fallback_result("AI returned an unexpected response format.")
 
     # --- Validate / sanitize the AI's response before trusting it ---
     if result.get("sentiment") not in VALID_SENTIMENTS:
@@ -193,7 +255,7 @@ def _dataset_stats_text(df: pd.DataFrame) -> str:
 def generate_campus_summary(df: pd.DataFrame) -> str:
     """
     Generate a short natural-language summary of the (filtered, analyzed)
-    dataset using the Gemini API. This is always derived from the current
+    dataset using a Hugging Face model. This is always derived from the current
     data - never a hardcoded string.
     """
     if df.empty:
@@ -225,15 +287,13 @@ Sample high-severity issues:
 """
 
     try:
-        response = client.models.generate_content(
-            model=MODEL_NAME,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                system_instruction="You write short, factual dashboard summaries.",
-                thinking_config=CLASSIFICATION_THINKING,
-            ),
+        return _chat(
+            client,
+            system="You write short, factual dashboard summaries.",
+            user=prompt,
+            max_tokens=400,
+            temperature=0.3,
         )
-        return response.text.strip()
     except Exception as exc:
         raise AIAnalysisError(f"Could not generate summary: {exc}")
 
@@ -295,14 +355,12 @@ Question: {question}
 """
 
     try:
-        response = client.models.generate_content(
-            model=MODEL_NAME,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                system_instruction=CHATBOT_SYSTEM_PROMPT,
-                thinking_config=CLASSIFICATION_THINKING,
-            ),
+        return _chat(
+            client,
+            system=CHATBOT_SYSTEM_PROMPT,
+            user=prompt,
+            max_tokens=500,
+            temperature=0.2,
         )
-        return response.text.strip()
     except Exception as exc:
         raise AIAnalysisError(f"Chatbot could not respond: {exc}")

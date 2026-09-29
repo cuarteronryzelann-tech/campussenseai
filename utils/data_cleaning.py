@@ -11,12 +11,12 @@ the Streamlit code focused purely on the UI.
 
 import pandas as pd
 
-# The columns every uploaded / loaded feedback CSV must contain.
+# The columns every loaded feedback CSV must contain.
 REQUIRED_COLUMNS = ["feedback_id", "date", "location", "feedback"]
 
 
 class DataValidationError(Exception):
-    """Raised when the uploaded/loaded CSV does not match the expected schema."""
+    """Raised when the loaded CSV does not match the expected schema."""
     pass
 
 
@@ -25,13 +25,12 @@ def load_data(file_path_or_buffer) -> pd.DataFrame:
     Load a campus feedback CSV into a Pandas DataFrame.
 
     Accepts either a file path (str) or a file-like object, so it works
-    both for the bundled sample dataset and for files uploaded through
-    Streamlit's st.file_uploader.
+    for the bundled campus_feedback.csv dataset.
     """
     try:
         df = pd.read_csv(file_path_or_buffer)
     except pd.errors.EmptyDataError:
-        raise DataValidationError("The uploaded CSV file is empty.")
+        raise DataValidationError("The CSV file is empty.")
     except Exception as exc:
         raise DataValidationError(f"Could not read the CSV file: {exc}")
 

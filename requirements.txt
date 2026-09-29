@@ -1,5 +1,5 @@
 streamlit>=1.32
 pandas>=2.0
 plotly>=5.20
-google-genai>=1.0
+huggingface_hub>=0.30
 python-dotenv>=1.0

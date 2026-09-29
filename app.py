@@ -33,7 +33,7 @@ from utils import visualization as viz
 # ----------------------------------------------------------------------------
 # Setup
 # ----------------------------------------------------------------------------
-load_dotenv()  # loads GEMINI_API_KEY from a local .env file (never hardcoded)
+load_dotenv()  # loads HF_TOKEN from a local .env file (never hardcoded)
 
 SAMPLE_DATA_PATH = os.path.join("data", "campus_feedback.csv")
 
@@ -173,13 +173,12 @@ st.write(
 st.divider()
 
 # ----------------------------------------------------------------------------
-# Sidebar - data upload, filters, analyze button
+# Sidebar - filters, analyze button
 # ----------------------------------------------------------------------------
 with st.sidebar:
     st.header("Data & Filters")
 
-    uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
-    use_sample = st.checkbox("Use bundled sample dataset", value=(uploaded_file is None))
+    st.caption("Dataset: data/campus_feedback.csv (loaded automatically)")
 
     st.markdown("---")
     st.subheader("Filters")
@@ -225,39 +224,24 @@ with st.sidebar:
     analyze_clicked = st.button("🔍 Analyze Feedback", use_container_width=True, type="primary")
 
 # ----------------------------------------------------------------------------
-# Load data (upload takes priority over sample)
+# Load data - the bundled CSV is loaded automatically (no upload needed)
 # ----------------------------------------------------------------------------
-data_source = None
-if uploaded_file is not None:
-    data_source = uploaded_file
-elif use_sample:
-    data_source = SAMPLE_DATA_PATH
-
-if data_source is not None and st.session_state.raw_df is None:
-    cleaned_df, error = safe_load_and_clean(data_source)
-    if error:
-        st.error(f"⚠️ {error}")
-    else:
-        st.session_state.raw_df = cleaned_df
-
-# Re-load if a new file was uploaded (different from what's cached)
-if uploaded_file is not None:
-    cleaned_df, error = safe_load_and_clean(uploaded_file)
+if st.session_state.raw_df is None:
+    cleaned_df, error = safe_load_and_clean(SAMPLE_DATA_PATH)
     if error:
         st.error(f"⚠️ {error}")
         st.stop()
-    else:
-        st.session_state.raw_df = cleaned_df
+    st.session_state.raw_df = cleaned_df
 
 # ----------------------------------------------------------------------------
 # Run AI analysis on demand
 # ----------------------------------------------------------------------------
 if analyze_clicked:
     if st.session_state.raw_df is None or st.session_state.raw_df.empty:
-        st.error("⚠️ No dataset loaded. Please upload a CSV or enable the sample dataset first.")
-    elif not os.getenv("GEMINI_API_KEY"):
+        st.error("⚠️ The dataset could not be loaded. Check that data/campus_feedback.csv exists.")
+    elif not (os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")):
         st.error(
-            "⚠️ GEMINI_API_KEY is not set. Add your API key to a .env file "
+            "⚠️ HF_TOKEN is not set. Add your Hugging Face token to a .env file "
             "(see README.md) before running analysis."
         )
     else:
@@ -281,8 +265,8 @@ if analyze_clicked:
 # ----------------------------------------------------------------------------
 if st.session_state.analyzed_df is None:
     st.info(
-        "👋 Load a dataset from the sidebar (the bundled sample is enabled by default) "
-        "and click **Analyze Feedback** to run the AI analysis and unlock the dashboard."
+        "👋 The campus feedback dataset is already loaded. "
+        "Click **Analyze Feedback** in the sidebar to run the AI analysis and unlock the dashboard."
     )
     if st.session_state.raw_df is not None:
         st.subheader("Preview of loaded (cleaned) data")
