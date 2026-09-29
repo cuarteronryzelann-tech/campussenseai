@@ -154,6 +154,7 @@ pip install -r requirements.txt
 3. To change the models without editing code, set `HF_MODELS=org/model-a,org/model-b` in `.env`.
    All models draw from the same monthly free credits; a `402 Payment Required` error means
    the credits are used up (analysis then falls back to the local keyword classifier).
+
    `meta-llama/Llama-3.1-8B-Instruct` is a gated model: accept its license on its
    Hugging Face page if you want the last fallback to work.
 

@@ -211,6 +211,25 @@ def _build_fallback_result(error_message: str, text: str = "") -> dict:
     return result
 
 
+def _sanitize_result(result: dict) -> dict:
+    """Validate / sanitize one analysis dict from the AI before trusting it."""
+    if result.get("sentiment") not in VALID_SENTIMENTS:
+        result["sentiment"] = "Neutral"
+    if result.get("category") not in VALID_CATEGORIES:
+        result["category"] = "Other"
+    if result.get("severity") not in VALID_SEVERITIES:
+        result["severity"] = "Low"
+    if not isinstance(result.get("keywords"), list):
+        result["keywords"] = []
+    result["keywords"] = [str(k).strip() for k in result["keywords"] if str(k).strip()]
+    result["main_issue"] = str(result.get("main_issue", "None")).strip() or "None"
+    result["summary"] = str(result.get("summary", "")).strip()
+    result["suggested_action"] = str(result.get("suggested_action", "")).strip() or "No action needed"
+    result["analysis_error"] = None
+
+    return result
+
+
 def analyze_feedback(client: InferenceClient, feedback_text: str) -> dict:
     """
     Send a single feedback entry to the Hugging Face model and return a structured dict.
@@ -238,22 +257,55 @@ def analyze_feedback(client: InferenceClient, feedback_text: str) -> dict:
     if not isinstance(result, dict):
         return _build_fallback_result("AI returned an unexpected response format.", feedback_text)
 
-    # --- Validate / sanitize the AI's response before trusting it ---
-    if result.get("sentiment") not in VALID_SENTIMENTS:
-        result["sentiment"] = "Neutral"
-    if result.get("category") not in VALID_CATEGORIES:
-        result["category"] = "Other"
-    if result.get("severity") not in VALID_SEVERITIES:
-        result["severity"] = "Low"
-    if not isinstance(result.get("keywords"), list):
-        result["keywords"] = []
-    result["keywords"] = [str(k).strip() for k in result["keywords"] if str(k).strip()]
-    result["main_issue"] = str(result.get("main_issue", "None")).strip() or "None"
-    result["summary"] = str(result.get("summary", "")).strip()
-    result["suggested_action"] = str(result.get("suggested_action", "")).strip() or "No action needed"
-    result["analysis_error"] = None
+    return _sanitize_result(result)
 
-    return result
+
+BATCH_SIZE = max(1, int(os.getenv("ANALYSIS_BATCH_SIZE", "10")))
+
+BATCH_SYSTEM_PROMPT = ANALYSIS_SYSTEM_PROMPT + """
+
+You will receive several numbered feedback entries at once. Respond ONLY with a single valid JSON
+array containing exactly one object per entry, in the same order. Each object has the keys
+described above plus "id" (the entry's number as an integer). No extra text, no markdown fences."""
+
+
+def _extract_json_array(text: str) -> list:
+    text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.MULTILINE).strip()
+    first, last = text.find("["), text.rfind("]")
+    if first == -1 or last <= first:
+        raise json.JSONDecodeError("No JSON array found", text, 0)
+    data = json.loads(text[first:last + 1])
+    if not isinstance(data, list):
+        raise json.JSONDecodeError("Not a JSON array", text, 0)
+    return data
+
+
+def analyze_batch(client, texts: list) -> list:
+    """Analyze several feedback texts in ONE request (saves tokens and requests). Same output as analyze_feedback."""
+    out = [None] * len(texts)
+    numbered = "\n".join(f"{i + 1}. {' '.join(str(t).split())}" for i, t in enumerate(texts))
+    try:
+        raw = _chat(client, BATCH_SYSTEM_PROMPT, "Feedback entries:\n" + numbered,
+                    max_tokens=min(4000, 230 * len(texts)), temperature=0.1)
+        items = _extract_json_array(raw)
+    except json.JSONDecodeError:
+        items = []
+    except Exception as exc:  # API down / out of credits: don't retry row by row
+        return [_build_fallback_result(f"API error: {exc}", t) for t in texts]
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        try:
+            idx = int(item.pop("id")) - 1
+        except (KeyError, TypeError, ValueError):
+            continue
+        if 0 <= idx < len(texts) and out[idx] is None:
+            out[idx] = _sanitize_result(item)
+    for i, t in enumerate(texts):  # anything the model skipped/garbled is retried on its own
+        if out[i] is None:
+            out[i] = analyze_feedback(client, t)
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -337,32 +389,40 @@ def analyze_dataframe(df: pd.DataFrame, progress_callback=None) -> pd.DataFrame:
     _api_disabled.clear()
     _api_disabled_reason.clear()
 
-    def _work(text: str) -> dict:
+    def _work(batch: list) -> list:
+        texts_ = [t for _, t in batch]
         if _api_disabled.is_set():
-            return _build_fallback_result(f"AI skipped after an earlier fatal API error: {_api_disabled_reason[0]}", text)
+            return [_build_fallback_result(f"AI skipped after an earlier fatal API error: {_api_disabled_reason[0]}", t)
+                    for t in texts_]
         # One client per task: cheap to create and avoids sharing a session between threads.
-        result = analyze_feedback(InferenceClient(api_key=token, timeout=120), text)
-        err = str(result.get("analysis_error") or "")
-        if err and any(m in err.lower() for m in _HARD_FAILURE_MARKERS):
-            if not _api_disabled.is_set():
-                _api_disabled_reason.append(err[:300])
-                _api_disabled.set()
-        return result
+        client_ = InferenceClient(api_key=token, timeout=120)
+        results_ = analyze_batch(client_, texts_)
+        for r in results_:
+            err = str(r.get("analysis_error") or "")
+            if err and any(m in err.lower() for m in _HARD_FAILURE_MARKERS):
+                if not _api_disabled.is_set():
+                    _api_disabled_reason.append(err[:300])
+                    _api_disabled.set()
+                break
+        return results_
 
     if pending:
-        workers = min(ANALYSIS_WORKERS, len(pending))
+        items_ = list(pending.items())
+        batches = [items_[i:i + BATCH_SIZE] for i in range(0, len(items_), BATCH_SIZE)]
+        workers = min(ANALYSIS_WORKERS, len(batches))
         with ThreadPoolExecutor(max_workers=workers) as pool:
-            futures = {pool.submit(_work, text): key for key, text in pending.items()}
+            futures = {pool.submit(_work, bt): bt for bt in batches}
             for fut in as_completed(futures):
-                key = futures[fut]
+                bt = futures[fut]
                 try:
-                    analysis = fut.result()
-                except Exception as exc:  # analyze_feedback should not raise, but never lose the batch
-                    analysis = _build_fallback_result(f"Unexpected error: {exc}", pending[key])
-                results[key] = analysis
-                if not analysis.get("analysis_error"):
-                    cache[key] = analysis           # only cache real results, not placeholders
-                done += sum(1 for t in texts if _cache_key(t) == key)
+                    analyses = fut.result()
+                except Exception as exc:  # never lose the whole run
+                    analyses = [_build_fallback_result(f"Unexpected error: {exc}", t) for _, t in bt]
+                for (key, _), analysis in zip(bt, analyses):
+                    results[key] = analysis
+                    if not analysis.get("analysis_error"):
+                        cache[key] = analysis           # only cache real results, not placeholders
+                    done += sum(1 for t in texts if _cache_key(t) == key)
                 if progress_callback:
                     progress_callback(min(done, total), total)
         _save_cache(cache)
