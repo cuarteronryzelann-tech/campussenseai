@@ -27,6 +27,8 @@ import json
 import pandas as pd
 from huggingface_hub import InferenceClient
 
+from utils.datasets import build_datasets, datasets_to_text, is_analyzed, SEVERITY_WEIGHT
+
 # Allowed values the AI must choose from. Keeping these as constants means
 # we can validate the AI's JSON output and fall back safely if it drifts.
 VALID_SENTIMENTS = ["Positive", "Neutral", "Negative", "Mixed"]
@@ -56,8 +58,15 @@ class AIAnalysisError(Exception):
 
 
 def get_hf_token() -> str | None:
-    """Return the Hugging Face token from the environment (or None)."""
-    return os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+    """Return the Hugging Face token from the environment or Streamlit secrets (or None)."""
+    token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+    if token:
+        return token
+    try:  # Streamlit Community Cloud secrets
+        import streamlit as st
+        return st.secrets.get("HF_TOKEN") or st.secrets.get("HUGGINGFACEHUB_API_TOKEN")
+    except Exception:
+        return None
 
 
 def get_client() -> InferenceClient:
@@ -81,7 +90,7 @@ def _clean_model_text(text: str) -> str:
 
 
 def _chat(client: InferenceClient, system: str, user: str,
-          max_tokens: int = 500, temperature: float = 0.2) -> str:
+          max_tokens: int = 500, temperature: float = 0.2, history: list | None = None) -> str:
     """
     Send one chat request, walking down MODEL_CHAIN until a model answers.
     Returns the model's cleaned text. Raises AIAnalysisError if every model fails.
@@ -98,6 +107,7 @@ def _chat(client: InferenceClient, system: str, user: str,
                 model=model,
                 messages=[
                     {"role": "system", "content": system},
+                    *(history or []),
                     {"role": "user", "content": user_msg},
                 ],
                 max_tokens=max_tokens,
@@ -298,69 +308,226 @@ Sample high-severity issues:
         raise AIAnalysisError(f"Could not generate summary: {exc}")
 
 
-CHATBOT_SYSTEM_PROMPT = """You are "CampusSense Assistant", a chatbot that answers questions
-about a specific set of analyzed campus feedback data. You will be given statistics and
-sample records from the dataset. Answer the user's question using ONLY that information.
+CHATBOT_SYSTEM_PROMPT = """You are "CampusSense Assistant", a friendly chatbot that answers questions
+about a specific set of campus feedback data. You are given 5 datasets: the full feedback
+records plus summary datasets by location, category, sentiment and severity.
 
 Rules:
-- Never invent facts, numbers, or issues that are not present in the provided data.
-- If the data provided is not sufficient to answer the question, say clearly:
+- Answer using ONLY the provided datasets. Never invent facts, numbers or issues.
+- Use the summary datasets for counts/rankings and the full records for specific examples.
+- If the user greets you or asks what you can do, reply briefly and suggest a few questions.
+- If the data is not sufficient to answer, say clearly:
   "The dataset does not contain enough information to answer that."
-- Keep answers concise and specific (mention numbers/locations/categories when relevant).
-"""
+- Keep answers concise and specific (mention numbers, locations and categories).
+- Use short bullet points when listing several items."""
+
+MAX_CONTEXT_ROWS = 150
+
+_STOPWORDS = {
+    "what", "which", "where", "when", "who", "how", "the", "and", "are", "is", "there", "this",
+    "that", "with", "have", "has", "any", "about", "does", "from", "for", "give", "show", "tell",
+    "list", "all", "campus", "feedback", "problem", "problems", "issue", "issues", "please", "can",
+    "you", "your", "many", "much", "most", "some", "them", "they", "their", "into", "over",
+}
+_GENERIC_LOCATION_WORDS = {"area", "areas", "campus"}
 
 
-def chatbot_answer(question: str, df: pd.DataFrame) -> str:
-    """
-    Answer a natural-language question about the analyzed dataset.
-    Grounds the model in aggregate statistics plus a small set of relevant
-    sample rows so it cannot fabricate information beyond the dataset.
-    """
-    if df.empty:
+def _norm_text(text: str) -> str:
+    return re.sub(r"[^a-z0-9 ]", "", str(text).lower().replace("-", ""))
+
+
+def _row_line(row, with_action: bool = True) -> str:
+    """One compact text line for a record (used in the AI prompt)."""
+    parts = [
+        str(getattr(row, "feedback_id", "")),
+        str(getattr(row, "date", ""))[:10],
+        str(getattr(row, "location", "")),
+    ]
+    if hasattr(row, "category"):
+        parts += [str(row.category), str(row.sentiment), str(row.severity)]
+    line = " | ".join(parts) + " | " + str(getattr(row, "feedback", ""))
+    action = str(getattr(row, "suggested_action", "") or "")
+    if with_action and action and action.lower() != "no action needed":
+        line += f" | Action: {action}"
+    return line
+
+
+def build_chat_context(question: str, df: pd.DataFrame, datasets: dict | None = None) -> str:
+    """Build the data context (all 5 datasets) that grounds the assistant's answer."""
+    datasets = datasets or build_datasets(df)
+    analyzed = is_analyzed(df)
+
+    rows = df
+    note = f"All {len(df)} records are listed."
+    if len(df) > MAX_CONTEXT_ROWS:
+        words = [w for w in re.findall(r"[a-z0-9]+", _norm_text(question)) if len(w) >= 4 and w not in _STOPWORDS]
+        text = (df["feedback"].astype(str).map(_norm_text)
+                + " " + df["location"].astype(str).map(_norm_text))
+        score = sum(text.str.contains(w[:5], regex=False).astype(int) for w in words) if words else 0
+        if analyzed:
+            score = score * 10 + df["severity"].map(SEVERITY_WEIGHT).fillna(1)
+        rows = df.assign(_score=score).sort_values("_score", ascending=False).head(MAX_CONTEXT_ROWS)
+        note = f"Showing the {MAX_CONTEXT_ROWS} most relevant of {len(df)} records (summary datasets cover all {len(df)})."
+
+    header = ("feedback_id | date | location | category | sentiment | severity | feedback | action"
+              if analyzed else "feedback_id | date | location | feedback")
+    record_lines = "\n".join(_row_line(r) for r in rows.itertuples(index=False))
+
+    summary_text = datasets_to_text(datasets)
+    if not analyzed:
+        summary_text += ("\n(AI analysis has not been run yet, so category/sentiment/severity "
+                         "datasets are not available.)")
+
+    return (f"### Dataset: Feedback (Full) - {note}\n{header}\n{record_lines}\n\n{summary_text}")
+
+
+# ----------------------------------------------------------------------------
+# Local (no-AI) fallback - guarantees the assistant always answers from the data
+# ----------------------------------------------------------------------------
+def _sorted_by_severity(rows: pd.DataFrame) -> pd.DataFrame:
+    if "severity" in rows.columns:
+        return rows.assign(_w=rows["severity"].map(SEVERITY_WEIGHT).fillna(1)).sort_values(
+            "_w", ascending=False)
+    return rows
+
+
+def _bullets(rows: pd.DataFrame, limit: int = 5) -> str:
+    lines = []
+    for r in rows.head(limit).itertuples(index=False):
+        loc = getattr(r, "location", "")
+        text = getattr(r, "summary", "") or getattr(r, "feedback", "")
+        tag = f"{r.severity} severity, {r.category}" if hasattr(r, "category") else str(getattr(r, "date", ""))[:10]
+        lines.append(f"- **{loc}** ({tag}): {text}")
+    more = f"\n- ...and {len(rows) - limit} more." if len(rows) > limit else ""
+    return "\n".join(lines) + more
+
+
+def _mentioned_locations(q: str, df: pd.DataFrame) -> list:
+    qn = _norm_text(q)
+    found = []
+    for loc in df["location"].dropna().unique():
+        tokens = [t for t in _norm_text(loc).split() if t not in _GENERIC_LOCATION_WORDS and len(t) >= 3]
+        if any(t in qn or (len(t) >= 6 and t[:5] in qn) for t in tokens):
+            found.append(loc)
+    return found
+
+
+def local_answer(question: str, df: pd.DataFrame) -> str:
+    """Rule-based answers computed directly from the DataFrame (used when the AI model is unavailable)."""
+    if df is None or df.empty:
         return "The dataset does not contain enough information to answer that."
 
-    client = get_client()
-    stats_text = _dataset_stats_text(df)
+    q = question.lower().strip()
+    analyzed = is_analyzed(df)
+    problems = df[df["sentiment"].isin(["Negative", "Mixed"])] if analyzed else df
+    has = lambda *words: any(w in q for w in words)
 
-    # Pull a handful of rows whose location/category/feedback text loosely
-    # match the question, to give the model concrete grounding examples.
-    sample_rows = df
-    lowered_question = question.lower()
-    if "location" in df.columns:
-        matches = df[df["location"].str.lower().apply(lambda loc: loc in lowered_question)]
-        if not matches.empty:
-            sample_rows = matches
-    if "category" in df.columns and sample_rows is df:
-        matches = df[df["category"].str.lower().apply(lambda cat: cat in lowered_question)]
-        if not matches.empty:
-            sample_rows = matches
+    # Greeting / help
+    if q.rstrip("!?. ") in {"hi", "hello", "hey", "help"} or has("what can you", "how do you work"):
+        return ("Hi! I answer questions using the campus feedback datasets. Try: "
+                "*What is the most common problem?*, *Which location has the most complaints?*, "
+                "*What are the major problems in the library?*, *What problems have high severity?*, "
+                "or *What improvements are commonly suggested?*")
 
-    sample_rows = sample_rows.head(8)
-    sample_lines = []
-    for row in sample_rows.itertuples(index=False):
-        location = getattr(row, "location", "Unknown")
-        category = getattr(row, "category", "Unknown")
-        sentiment = getattr(row, "sentiment", "Unknown")
-        severity = getattr(row, "severity", "Unknown")
-        summary = getattr(row, "summary", getattr(row, "feedback", ""))
-        sample_lines.append(f"- [{location} | {category} | {sentiment} | {severity}] {summary}")
+    locs = _mentioned_locations(q, df)
+    if locs:
+        rows = df[df["location"].isin(locs)]
+        shown = _sorted_by_severity(rows[rows["sentiment"].isin(["Negative", "Mixed"])] if analyzed else rows)
+        name = ", ".join(locs)
+        if analyzed and shown.empty:
+            return f"**{name}** has {len(rows)} report(s) and none of them are negative or mixed."
+        extra = f" ({len(shown)} negative/mixed)" if analyzed else ""
+        return f"**{name}** has {len(rows)} report(s){extra}:\n{_bullets(shown)}"
 
-    prompt = f"""Dataset statistics:
-{stats_text}
+    if has("location", "where", "which place", "which area") and has("most", "top", "worst", "highest", "complaint"):
+        counts = problems["location"].value_counts()
+        top = counts.head(3)
+        label = "negative/mixed reports" if analyzed else "reports"
+        return f"**{top.index[0]}** has the most {label} ({top.iloc[0]}). Next: " + \
+            ", ".join(f"{k} ({v})" for k, v in top.iloc[1:].items()) + "."
 
-Relevant sample records:
-{chr(10).join(sample_lines) if sample_lines else "None available"}
+    if analyzed and has("high severity", "severe", "urgent", "serious", "critical", "high priority") or \
+            (analyzed and "high" in q):
+        rows = _sorted_by_severity(df[df["severity"] == "High"])
+        if rows.empty:
+            return "No feedback is marked High severity in the current data."
+        return f"{len(rows)} report(s) are High severity:\n{_bullets(rows, 6)}"
 
-Question: {question}
-"""
+    if has("improve", "suggest", "action", "solution", "recommend", "fix"):
+        if not analyzed or "suggested_action" not in df.columns:
+            return "Run **Analyze Feedback** first - suggested actions are generated by the AI analysis."
+        acts = df["suggested_action"].astype(str)
+        acts = acts[~acts.str.lower().isin(["no action needed", "review manually.", ""])]
+        if acts.empty:
+            return "The dataset does not contain enough information to answer that."
+        top = acts.value_counts().head(5)
+        return "Commonly suggested improvements:\n" + "\n".join(f"- {a}" for a in top.index)
 
+    if has("negative", "complain", "summarize", "summary"):
+        if not analyzed:
+            return "Run **Analyze Feedback** first so I can tell negative feedback apart."
+        neg = df[df["sentiment"] == "Negative"]
+        if neg.empty:
+            return "There is no negative feedback in the current data."
+        cats = ", ".join(f"{k} ({v})" for k, v in neg["category"].value_counts().head(3).items())
+        locs_top = ", ".join(f"{k} ({v})" for k, v in neg["location"].value_counts().head(3).items())
+        return (f"There are {len(neg)} negative reports. Top categories: {cats}. "
+                f"Top locations: {locs_top}.\n{_bullets(_sorted_by_severity(neg))}")
+
+    if analyzed and has("positive", "praise", "compliment", "good"):
+        pos = df[df["sentiment"] == "Positive"]
+        return f"There are {len(pos)} positive reports:\n{_bullets(pos)}" if not pos.empty \
+            else "There is no positive feedback in the current data."
+
+    if analyzed and has("common", "most", "top", "main", "biggest", "major", "frequent", "category", "categories"):
+        counts = problems["category"].value_counts()
+        if not counts.empty:
+            return f"The most common problem category is **{counts.index[0]}** ({counts.iloc[0]} reports). " \
+                   "Next: " + ", ".join(f"{k} ({v})" for k, v in counts.iloc[1:4].items()) + "."
+
+    if has("how many", "total", "number of", "count"):
+        if analyzed:
+            s = df["sentiment"].value_counts()
+            return f"There are {len(df)} feedback records: " + ", ".join(f"{k} {v}" for k, v in s.items()) + "."
+        return f"There are {len(df)} feedback records across {df['location'].nunique()} locations."
+
+    if analyzed:
+        cats = [c for c in df["category"].unique() if c.lower() in q]
+        if cats:
+            rows = _sorted_by_severity(df[df["category"].isin(cats)])
+            return f"{len(rows)} report(s) in **{', '.join(cats)}**:\n{_bullets(rows)}"
+
+    # Keyword search across the feedback text
+    words = [w for w in re.findall(r"[a-z0-9]+", _norm_text(q)) if len(w) >= 4 and w not in _STOPWORDS]
+    if words:
+        text = df["feedback"].astype(str).map(_norm_text)
+        score = sum(text.str.contains(w[:5], regex=False).astype(int) for w in words)
+        hits = _sorted_by_severity(df[score > 0])
+        if not hits.empty:
+            return f"Found {len(hits)} related report(s):\n{_bullets(hits)}"
+
+    return "The dataset does not contain enough information to answer that."
+
+
+def chatbot_answer(question: str, df: pd.DataFrame, history: list | None = None,
+                   datasets: dict | None = None) -> dict:
+    """
+    Answer a question about the datasets. Returns {"answer", "mode", "error"}.
+    mode == "ai": answered by the Hugging Face model, grounded in all 5 datasets.
+    mode == "local": AI unavailable (no token / API error) - answered directly from the data.
+    The assistant therefore always responds.
+    """
+    if df is None or df.empty:
+        return {"answer": "The dataset does not contain enough information to answer that.",
+                "mode": "local", "error": None}
+
+    prompt = f"{build_chat_context(question, df, datasets)}\n\nQuestion: {question}"
+    recent = [{"role": m["role"], "content": m["content"]}
+              for m in (history or [])[-6:] if m.get("role") in ("user", "assistant")]
     try:
-        return _chat(
-            client,
-            system=CHATBOT_SYSTEM_PROMPT,
-            user=prompt,
-            max_tokens=500,
-            temperature=0.2,
-        )
-    except Exception as exc:
-        raise AIAnalysisError(f"Chatbot could not respond: {exc}")
+        client = get_client()
+        answer = _chat(client, CHATBOT_SYSTEM_PROMPT, prompt,
+                       max_tokens=700, temperature=0.2, history=recent)
+        return {"answer": answer, "mode": "ai", "error": None}
+    except AIAnalysisError as exc:
+        return {"answer": local_answer(question, df), "mode": "local", "error": str(exc)}
