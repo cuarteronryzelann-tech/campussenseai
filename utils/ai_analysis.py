@@ -46,12 +46,27 @@ VALID_CATEGORIES = [
 VALID_SEVERITIES = ["Low", "Medium", "High"]
 
 # Models are tried in this order; the first one that responds is used.
-MODEL_CHAIN = [
+# All of these are small/cheap chat models served through Hugging Face Inference Providers,
+# so they run on the free monthly credits that come with a free HF account. They are all
+# non-reasoning (or hybrid) models on purpose: short JSON answers need no long "thinking".
+# Override the list without touching code: HF_MODELS="org/model-a,org/model-b" in .env.
+DEFAULT_MODEL_CHAIN = [
     "Qwen/Qwen2.5-7B-Instruct",
     "Qwen/Qwen3-8B",
-    "meta-llama/Llama-3.1-8B-Instruct",
+    "meta-llama/Llama-3.1-8B-Instruct",       # gated: accept the license on its HF page
+    "Qwen/Qwen3-4B-Instruct-2507",            # very cheap, non-thinking
+    "google/gemma-3-12b-it",
+    "google/gemma-3-4b-it",
+    "ibm-granite/granite-4.2-8b",
+    "microsoft/phi-4",                        # 16k context - fine for per-row analysis
+    "Qwen/Qwen3-14B",
 ]
+MODEL_CHAIN = [m.strip() for m in os.getenv("HF_MODELS", "").split(",") if m.strip()] or DEFAULT_MODEL_CHAIN
 MODEL_NAME = MODEL_CHAIN[0]
+
+# Hybrid "thinking" Qwen3 models: appending /no_think keeps answers short and fast.
+# (Not needed for the *-Instruct-2507 variants, which never think.)
+_NO_THINK_MODELS = {"Qwen/Qwen3-8B", "Qwen/Qwen3-14B", "Qwen/Qwen3-32B", "Qwen/Qwen3-30B-A3B"}
 
 # Index of the model in MODEL_CHAIN that last worked, so we don't keep
 # retrying a model that already failed on every single row.
@@ -60,6 +75,11 @@ _active_model_index = 0
 
 _TRANSIENT_MARKERS = ("429", "rate limit", "too many requests", "502", "503", "504", "timeout",
                       "timed out", "overloaded", "temporarily", "connection")
+
+
+# Errors that will hit every model equally (unlike a gated/unavailable single model).
+_ACCOUNT_WIDE_MARKERS = ("402", "payment required", "credit", "depleted", "invalid token",
+                         "invalid credentials", "401", "unauthorized")
 
 
 class AIAnalysisError(Exception):
@@ -110,8 +130,8 @@ def _chat(client: InferenceClient, system: str, user: str,
 
     for idx in range(_active_model_index, len(MODEL_CHAIN)):
         model = MODEL_CHAIN[idx]
-        # Qwen3 is a "thinking" model - /no_think keeps answers fast and short.
-        user_msg = user + " /no_think" if "Qwen3" in model else user
+        # Hybrid Qwen3 models think by default - /no_think keeps answers fast and short.
+        user_msg = user + " /no_think" if model in _NO_THINK_MODELS else user
         for attempt in range(3):
             try:
                 response = client.chat_completion(
@@ -138,6 +158,9 @@ def _chat(client: InferenceClient, system: str, user: str,
                     time.sleep(1.5 * (2 ** attempt) + random.random())
                     continue
                 errors.append(f"{model}: {exc}")
+                if any(k in msg for k in _ACCOUNT_WIDE_MARKERS):
+                    # Out of credits / invalid token affects every model - don't burn a request on each one.
+                    raise AIAnalysisError("Hugging Face request failed for all models. " + " | ".join(errors))
                 break
 
     raise AIAnalysisError("All Hugging Face models failed. " + " | ".join(errors))

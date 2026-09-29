@@ -9,7 +9,7 @@
 ## 1. Project Description
 
 CampusSense AI is a Streamlit web application that uses a Generative AI model (open-source
-models served by the Hugging Face Inference API: Qwen2.5-7B-Instruct, with automatic fallback to Qwen3-8B and Llama-3.1-8B-Instruct) to analyze free-text campus feedback — comments students leave about the library, computer
+models served by the Hugging Face Inference API: Qwen2.5-7B-Instruct, with automatic fallback through Qwen3-8B, Llama-3.1-8B-Instruct, Qwen3-4B-Instruct-2507, Gemma-3 12B/4B, Granite-4.2-8B, Phi-4 and Qwen3-14B) to analyze free-text campus feedback — comments students leave about the library, computer
 labs, classrooms, cafeteria, restrooms, parking, and more — and automatically turns that raw
 text into structured, actionable insight: sentiment, problem category, severity, keywords,
 a short summary, and a suggested action for staff.
@@ -87,7 +87,7 @@ sample data.)
 - **Python 3.10+**
 - **Streamlit** – interactive web dashboard
 - **Pandas** – data loading and cleaning
-- **Hugging Face Inference API** (`huggingface_hub`; Qwen2.5-7B-Instruct → Qwen3-8B → Llama-3.1-8B-Instruct fallback chain) – GenAI text analysis, summary generation, and chatbot
+- **Hugging Face Inference API** (`huggingface_hub`; 9-model fallback chain, see `DEFAULT_MODEL_CHAIN` in `utils/ai_analysis.py`) – GenAI text analysis, summary generation, and chatbot
 - **Plotly Express** – interactive charts
 - **python-dotenv** – loading the API key from a local `.env` file
 
@@ -151,7 +151,10 @@ pip install -r requirements.txt
    HF_TOKEN=hf_your_token_here
    ```
 
-3. `meta-llama/Llama-3.1-8B-Instruct` is a gated model: accept its license on its
+3. To change the models without editing code, set `HF_MODELS=org/model-a,org/model-b` in `.env`.
+   All models draw from the same monthly free credits; a `402 Payment Required` error means
+   the credits are used up (analysis then falls back to the local keyword classifier).
+   `meta-llama/Llama-3.1-8B-Instruct` is a gated model: accept its license on its
    Hugging Face page if you want the last fallback to work.
 
 4. **Never commit your real `.env` file** with a real key to a public GitHub repository —
