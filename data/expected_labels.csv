@@ -1,0 +1,567 @@
+feedback_id,location,category,sentiment,severity
+FB0001,Campus Entrance,Food Service,Neutral,Low
+FB0002,Campus Entrance,Food Service,Negative,High
+FB0003,Computer Laboratory,Software,Neutral,Low
+FB0004,Library,Software,Positive,Low
+FB0005,Parking Area,Transportation,Neutral,Low
+FB0006,Restroom,Facilities,Positive,Low
+FB0007,Student Lounge,Food Service,Negative,Medium
+FB0008,Campus Entrance,Safety,Mixed,Medium
+FB0009,Campus Entrance,Cleanliness,Mixed,Medium
+FB0010,Classroom,Other,Neutral,Low
+FB0011,Library,Software,Negative,Low
+FB0012,Library,Environment,Negative,Medium
+FB0013,Restroom,Safety,Negative,Low
+FB0014,Student Lounge,Hardware,Positive,Low
+FB0015,Student Lounge,Academic,Mixed,Medium
+FB0016,Student Lounge,Academic,Positive,Low
+FB0017,Wi-Fi Areas,Other,Mixed,Medium
+FB0018,Computer Laboratory,Academic,Negative,Medium
+FB0019,Library,Other,Mixed,Medium
+FB0020,Library,Hardware,Neutral,Low
+FB0021,Parking Area,Cleanliness,Negative,Low
+FB0022,Parking Area,Safety,Negative,Medium
+FB0023,Student Lounge,Facilities,Negative,High
+FB0024,Student Lounge,Food Service,Negative,High
+FB0025,Wi-Fi Areas,Hardware,Negative,Medium
+FB0026,Cafeteria,Internet,Negative,Low
+FB0027,Computer Laboratory,Software,Mixed,Medium
+FB0028,Computer Laboratory,Environment,Positive,Low
+FB0029,Library,Facilities,Negative,High
+FB0030,Library,Cleanliness,Neutral,Low
+FB0031,Parking Area,Safety,Neutral,Low
+FB0032,Restroom,Facilities,Negative,Low
+FB0033,Restroom,Cleanliness,Negative,Medium
+FB0034,Cafeteria,Food Service,Positive,Low
+FB0035,Cafeteria,Cleanliness,Neutral,Low
+FB0036,Cafeteria,Food Service,Negative,Low
+FB0037,Cafeteria,Cleanliness,Negative,Medium
+FB0038,Cafeteria,Cleanliness,Positive,Low
+FB0039,Classroom,Academic,Mixed,Medium
+FB0040,Classroom,Internet,Mixed,Medium
+FB0041,Computer Laboratory,Academic,Positive,Low
+FB0042,Parking Area,Software,Negative,Low
+FB0043,Parking Area,Hardware,Negative,Medium
+FB0044,Campus Entrance,Environment,Neutral,Low
+FB0045,Campus Entrance,Software,Mixed,Medium
+FB0046,Campus Entrance,Food Service,Positive,Low
+FB0047,Computer Laboratory,Other,Negative,Medium
+FB0048,Computer Laboratory,Academic,Mixed,Medium
+FB0049,Parking Area,Safety,Positive,Low
+FB0050,Student Lounge,Food Service,Negative,High
+FB0051,Campus Entrance,Food Service,Negative,Medium
+FB0052,Campus Entrance,Transportation,Neutral,Low
+FB0053,Classroom,Cleanliness,Negative,High
+FB0054,Computer Laboratory,Facilities,Positive,Low
+FB0055,Parking Area,Transportation,Negative,Medium
+FB0056,Student Lounge,Internet,Mixed,Medium
+FB0057,Wi-Fi Areas,Facilities,Negative,Medium
+FB0058,Classroom,Academic,Negative,Medium
+FB0059,Classroom,Safety,Negative,High
+FB0060,Computer Laboratory,Internet,Positive,Low
+FB0061,Computer Laboratory,Environment,Negative,Medium
+FB0062,Parking Area,Transportation,Negative,Low
+FB0063,Student Lounge,Other,Negative,Low
+FB0064,Wi-Fi Areas,Internet,Positive,Low
+FB0065,Wi-Fi Areas,Facilities,Mixed,Medium
+FB0066,Cafeteria,Hardware,Negative,Low
+FB0067,Restroom,Environment,Negative,Low
+FB0068,Student Lounge,Environment,Negative,High
+FB0069,Student Lounge,Facilities,Mixed,Medium
+FB0070,Wi-Fi Areas,Safety,Negative,High
+FB0071,Classroom,Software,Negative,High
+FB0072,Computer Laboratory,Internet,Neutral,Low
+FB0073,Library,Academic,Negative,Medium
+FB0074,Parking Area,Transportation,Negative,High
+FB0075,Parking Area,Facilities,Positive,Low
+FB0076,Classroom,Cleanliness,Negative,Medium
+FB0077,Computer Laboratory,Safety,Mixed,Medium
+FB0078,Computer Laboratory,Software,Negative,Low
+FB0079,Library,Academic,Negative,High
+FB0080,Library,Internet,Negative,Medium
+FB0081,Parking Area,Transportation,Negative,Medium
+FB0082,Restroom,Other,Negative,Medium
+FB0083,Restroom,Environment,Negative,Medium
+FB0084,Wi-Fi Areas,Safety,Neutral,Low
+FB0085,Cafeteria,Food Service,Negative,Medium
+FB0086,Computer Laboratory,Facilities,Negative,Medium
+FB0087,Computer Laboratory,Environment,Negative,Low
+FB0088,Parking Area,Safety,Negative,Low
+FB0089,Student Lounge,Environment,Positive,Low
+FB0090,Student Lounge,Academic,Negative,Low
+FB0091,Campus Entrance,Software,Neutral,Low
+FB0092,Parking Area,Cleanliness,Negative,High
+FB0093,Student Lounge,Environment,Negative,Low
+FB0094,Cafeteria,Facilities,Negative,Medium
+FB0095,Cafeteria,Facilities,Neutral,Low
+FB0096,Campus Entrance,Transportation,Mixed,Medium
+FB0097,Classroom,Academic,Mixed,Medium
+FB0098,Computer Laboratory,Other,Neutral,Low
+FB0099,Computer Laboratory,Internet,Positive,Low
+FB0100,Restroom,Other,Neutral,Low
+FB0101,Student Lounge,Academic,Negative,Medium
+FB0102,Student Lounge,Safety,Negative,High
+FB0103,Student Lounge,Food Service,Mixed,Medium
+FB0104,Campus Entrance,Hardware,Neutral,Low
+FB0105,Classroom,Internet,Negative,Medium
+FB0106,Student Lounge,Other,Negative,Medium
+FB0107,Student Lounge,Software,Positive,Low
+FB0108,Cafeteria,Food Service,Positive,Low
+FB0109,Campus Entrance,Transportation,Negative,High
+FB0110,Classroom,Cleanliness,Mixed,Medium
+FB0111,Classroom,Internet,Negative,High
+FB0112,Computer Laboratory,Hardware,Negative,Low
+FB0113,Wi-Fi Areas,Internet,Neutral,Low
+FB0114,Cafeteria,Facilities,Negative,High
+FB0115,Computer Laboratory,Software,Negative,Medium
+FB0116,Computer Laboratory,Academic,Neutral,Low
+FB0117,Parking Area,Transportation,Negative,Medium
+FB0118,Wi-Fi Areas,Facilities,Negative,Medium
+FB0119,Wi-Fi Areas,Other,Positive,Low
+FB0120,Wi-Fi Areas,Internet,Negative,Low
+FB0121,Cafeteria,Environment,Mixed,Medium
+FB0122,Classroom,Academic,Positive,Low
+FB0123,Classroom,Environment,Negative,Low
+FB0124,Classroom,Hardware,Negative,Medium
+FB0125,Library,Academic,Neutral,Low
+FB0126,Library,Facilities,Mixed,Medium
+FB0127,Parking Area,Other,Mixed,Medium
+FB0128,Student Lounge,Environment,Mixed,Medium
+FB0129,Campus Entrance,Facilities,Negative,Medium
+FB0130,Campus Entrance,Food Service,Negative,High
+FB0131,Classroom,Academic,Negative,High
+FB0132,Student Lounge,Food Service,Mixed,Medium
+FB0133,Student Lounge,Environment,Neutral,Low
+FB0134,Cafeteria,Facilities,Positive,Low
+FB0135,Cafeteria,Facilities,Mixed,Medium
+FB0136,Campus Entrance,Environment,Mixed,Medium
+FB0137,Restroom,Facilities,Mixed,Medium
+FB0138,Cafeteria,Internet,Mixed,Medium
+FB0139,Cafeteria,Internet,Negative,Medium
+FB0140,Campus Entrance,Transportation,Negative,Low
+FB0141,Classroom,Hardware,Mixed,Medium
+FB0142,Library,Environment,Positive,Low
+FB0143,Restroom,Cleanliness,Mixed,Medium
+FB0144,Restroom,Cleanliness,Positive,Low
+FB0145,Wi-Fi Areas,Environment,Negative,Medium
+FB0146,Campus Entrance,Food Service,Mixed,Medium
+FB0147,Computer Laboratory,Facilities,Negative,Low
+FB0148,Computer Laboratory,Hardware,Mixed,Medium
+FB0149,Parking Area,Transportation,Negative,Medium
+FB0150,Parking Area,Hardware,Negative,Low
+FB0151,Restroom,Environment,Positive,Low
+FB0152,Student Lounge,Internet,Neutral,Low
+FB0153,Wi-Fi Areas,Hardware,Negative,Medium
+FB0154,Parking Area,Environment,Neutral,Low
+FB0155,Parking Area,Other,Neutral,Low
+FB0156,Campus Entrance,Food Service,Negative,Medium
+FB0157,Campus Entrance,Transportation,Positive,Low
+FB0158,Campus Entrance,Transportation,Neutral,Low
+FB0159,Computer Laboratory,Academic,Negative,High
+FB0160,Parking Area,Environment,Negative,Low
+FB0161,Parking Area,Transportation,Negative,Low
+FB0162,Parking Area,Other,Negative,Low
+FB0163,Parking Area,Transportation,Negative,High
+FB0164,Restroom,Hardware,Negative,Medium
+FB0165,Wi-Fi Areas,Other,Negative,Medium
+FB0166,Wi-Fi Areas,Safety,Negative,Medium
+FB0167,Wi-Fi Areas,Software,Mixed,Medium
+FB0168,Cafeteria,Safety,Negative,Low
+FB0169,Computer Laboratory,Cleanliness,Mixed,Medium
+FB0170,Computer Laboratory,Safety,Negative,Low
+FB0171,Computer Laboratory,Internet,Negative,High
+FB0172,Computer Laboratory,Other,Mixed,Medium
+FB0173,Student Lounge,Internet,Positive,Low
+FB0174,Student Lounge,Software,Negative,High
+FB0175,Student Lounge,Environment,Negative,Medium
+FB0176,Student Lounge,Internet,Negative,Medium
+FB0177,Student Lounge,Food Service,Negative,Low
+FB0178,Cafeteria,Other,Negative,Medium
+FB0179,Campus Entrance,Other,Negative,Low
+FB0180,Campus Entrance,Environment,Negative,Medium
+FB0181,Classroom,Other,Positive,Low
+FB0182,Classroom,Internet,Positive,Low
+FB0183,Classroom,Hardware,Positive,Low
+FB0184,Library,Internet,Positive,Low
+FB0185,Library,Other,Negative,Medium
+FB0186,Parking Area,Hardware,Neutral,Low
+FB0187,Wi-Fi Areas,Other,Neutral,Low
+FB0188,Cafeteria,Software,Mixed,Medium
+FB0189,Cafeteria,Internet,Negative,Medium
+FB0190,Classroom,Facilities,Negative,Low
+FB0191,Classroom,Environment,Mixed,Medium
+FB0192,Classroom,Facilities,Mixed,Medium
+FB0193,Computer Laboratory,Cleanliness,Negative,Low
+FB0194,Library,Other,Negative,Medium
+FB0195,Parking Area,Transportation,Negative,Low
+FB0196,Wi-Fi Areas,Internet,Negative,High
+FB0197,Parking Area,Software,Neutral,Low
+FB0198,Student Lounge,Academic,Negative,High
+FB0199,Cafeteria,Environment,Neutral,Low
+FB0200,Cafeteria,Food Service,Neutral,Low
+FB0201,Cafeteria,Hardware,Positive,Low
+FB0202,Campus Entrance,Hardware,Mixed,Medium
+FB0203,Computer Laboratory,Academic,Negative,Medium
+FB0204,Library,Cleanliness,Mixed,Medium
+FB0205,Restroom,Environment,Negative,High
+FB0206,Campus Entrance,Other,Negative,Medium
+FB0207,Library,Environment,Negative,High
+FB0208,Parking Area,Facilities,Negative,Low
+FB0209,Parking Area,Environment,Negative,High
+FB0210,Restroom,Other,Negative,Medium
+FB0211,Student Lounge,Safety,Neutral,Low
+FB0212,Wi-Fi Areas,Software,Negative,Medium
+FB0213,Wi-Fi Areas,Safety,Positive,Low
+FB0214,Cafeteria,Food Service,Neutral,Low
+FB0215,Cafeteria,Safety,Negative,Medium
+FB0216,Cafeteria,Other,Negative,Low
+FB0217,Campus Entrance,Other,Positive,Low
+FB0218,Campus Entrance,Food Service,Mixed,Medium
+FB0219,Campus Entrance,Food Service,Negative,Medium
+FB0220,Campus Entrance,Transportation,Negative,High
+FB0221,Campus Entrance,Transportation,Negative,Medium
+FB0222,Classroom,Hardware,Negative,Low
+FB0223,Classroom,Other,Negative,Low
+FB0224,Parking Area,Safety,Negative,High
+FB0225,Cafeteria,Hardware,Mixed,Medium
+FB0226,Cafeteria,Food Service,Negative,Low
+FB0227,Cafeteria,Software,Negative,High
+FB0228,Campus Entrance,Cleanliness,Negative,Low
+FB0229,Parking Area,Cleanliness,Negative,Medium
+FB0230,Student Lounge,Software,Negative,Medium
+FB0231,Student Lounge,Hardware,Negative,Low
+FB0232,Wi-Fi Areas,Facilities,Negative,High
+FB0233,Campus Entrance,Transportation,Negative,Medium
+FB0234,Classroom,Academic,Negative,Medium
+FB0235,Library,Cleanliness,Negative,Medium
+FB0236,Library,Hardware,Negative,High
+FB0237,Parking Area,Other,Negative,Medium
+FB0238,Student Lounge,Other,Positive,Low
+FB0239,Wi-Fi Areas,Internet,Negative,Medium
+FB0240,Cafeteria,Environment,Negative,Low
+FB0241,Campus Entrance,Software,Positive,Low
+FB0242,Campus Entrance,Transportation,Negative,Medium
+FB0243,Student Lounge,Facilities,Neutral,Low
+FB0244,Wi-Fi Areas,Environment,Positive,Low
+FB0245,Campus Entrance,Transportation,Neutral,Low
+FB0246,Classroom,Environment,Negative,Medium
+FB0247,Classroom,Safety,Mixed,Medium
+FB0248,Computer Laboratory,Software,Negative,High
+FB0249,Library,Facilities,Negative,Medium
+FB0250,Restroom,Hardware,Neutral,Low
+FB0251,Restroom,Environment,Mixed,Medium
+FB0252,Student Lounge,Food Service,Positive,Low
+FB0253,Student Lounge,Software,Neutral,Low
+FB0254,Wi-Fi Areas,Internet,Negative,Medium
+FB0255,Wi-Fi Areas,Software,Neutral,Low
+FB0256,Cafeteria,Hardware,Neutral,Low
+FB0257,Computer Laboratory,Other,Negative,Low
+FB0258,Restroom,Safety,Mixed,Medium
+FB0259,Student Lounge,Hardware,Negative,High
+FB0260,Cafeteria,Internet,Negative,High
+FB0261,Classroom,Safety,Positive,Low
+FB0262,Classroom,Academic,Negative,High
+FB0263,Computer Laboratory,Internet,Negative,Medium
+FB0264,Library,Safety,Neutral,Low
+FB0265,Library,Environment,Neutral,Low
+FB0266,Restroom,Environment,Neutral,Low
+FB0267,Restroom,Hardware,Mixed,Medium
+FB0268,Student Lounge,Internet,Negative,Medium
+FB0269,Wi-Fi Areas,Hardware,Mixed,Medium
+FB0270,Wi-Fi Areas,Internet,Positive,Low
+FB0271,Campus Entrance,Cleanliness,Neutral,Low
+FB0272,Campus Entrance,Environment,Negative,Low
+FB0273,Computer Laboratory,Facilities,Neutral,Low
+FB0274,Computer Laboratory,Hardware,Negative,High
+FB0275,Library,Safety,Mixed,Medium
+FB0276,Parking Area,Hardware,Mixed,Medium
+FB0277,Parking Area,Environment,Mixed,Medium
+FB0278,Restroom,Safety,Negative,Medium
+FB0279,Cafeteria,Food Service,Mixed,Medium
+FB0280,Campus Entrance,Transportation,Negative,Low
+FB0281,Classroom,Cleanliness,Neutral,Low
+FB0282,Library,Facilities,Negative,Low
+FB0283,Library,Environment,Mixed,Medium
+FB0284,Restroom,Other,Negative,Low
+FB0285,Wi-Fi Areas,Environment,Negative,Medium
+FB0286,Cafeteria,Internet,Positive,Low
+FB0287,Campus Entrance,Safety,Negative,Low
+FB0288,Classroom,Facilities,Negative,Medium
+FB0289,Parking Area,Cleanliness,Neutral,Low
+FB0290,Restroom,Environment,Negative,Medium
+FB0291,Restroom,Safety,Positive,Low
+FB0292,Student Lounge,Cleanliness,Positive,Low
+FB0293,Student Lounge,Internet,Positive,Low
+FB0294,Cafeteria,Internet,Neutral,Low
+FB0295,Cafeteria,Facilities,Negative,Low
+FB0296,Campus Entrance,Safety,Negative,High
+FB0297,Campus Entrance,Facilities,Mixed,Medium
+FB0298,Library,Internet,Positive,Low
+FB0299,Parking Area,Facilities,Neutral,Low
+FB0300,Student Lounge,Academic,Negative,High
+FB0301,Student Lounge,Cleanliness,Negative,Medium
+FB0302,Campus Entrance,Software,Negative,Medium
+FB0303,Library,Internet,Neutral,Low
+FB0304,Library,Other,Positive,Low
+FB0305,Parking Area,Safety,Mixed,Medium
+FB0306,Parking Area,Cleanliness,Mixed,Medium
+FB0307,Student Lounge,Academic,Mixed,Medium
+FB0308,Student Lounge,Food Service,Positive,Low
+FB0309,Cafeteria,Other,Positive,Low
+FB0310,Campus Entrance,Cleanliness,Negative,High
+FB0311,Classroom,Academic,Negative,Medium
+FB0312,Classroom,Cleanliness,Positive,Low
+FB0313,Classroom,Internet,Positive,Low
+FB0314,Parking Area,Transportation,Positive,Low
+FB0315,Parking Area,Hardware,Positive,Low
+FB0316,Parking Area,Software,Positive,Low
+FB0317,Student Lounge,Safety,Negative,Medium
+FB0318,Computer Laboratory,Internet,Negative,Low
+FB0319,Library,Academic,Positive,Low
+FB0320,Library,Internet,Mixed,Medium
+FB0321,Restroom,Other,Positive,Low
+FB0322,Student Lounge,Facilities,Positive,Low
+FB0323,Wi-Fi Areas,Environment,Negative,Low
+FB0324,Cafeteria,Cleanliness,Negative,High
+FB0325,Campus Entrance,Facilities,Positive,Low
+FB0326,Campus Entrance,Food Service,Negative,Low
+FB0327,Library,Software,Negative,Medium
+FB0328,Restroom,Safety,Positive,Low
+FB0329,Library,Hardware,Positive,Low
+FB0330,Library,Safety,Negative,High
+FB0331,Library,Internet,Negative,High
+FB0332,Parking Area,Software,Negative,High
+FB0333,Campus Entrance,Software,Negative,Low
+FB0334,Classroom,Other,Mixed,Medium
+FB0335,Computer Laboratory,Other,Positive,Low
+FB0336,Parking Area,Transportation,Mixed,Medium
+FB0337,Restroom,Hardware,Negative,High
+FB0338,Parking Area,Transportation,Mixed,Medium
+FB0339,Restroom,Hardware,Negative,Low
+FB0340,Student Lounge,Food Service,Negative,Medium
+FB0341,Wi-Fi Areas,Safety,Negative,Low
+FB0342,Student Lounge,Hardware,Neutral,Low
+FB0343,Cafeteria,Environment,Negative,High
+FB0344,Cafeteria,Food Service,Negative,High
+FB0345,Cafeteria,Food Service,Negative,Medium
+FB0346,Campus Entrance,Facilities,Neutral,Low
+FB0347,Campus Entrance,Transportation,Positive,Low
+FB0348,Classroom,Internet,Neutral,Low
+FB0349,Library,Internet,Negative,Low
+FB0350,Library,Hardware,Negative,Low
+FB0351,Restroom,Hardware,Positive,Low
+FB0352,Restroom,Cleanliness,Negative,Low
+FB0353,Restroom,Environment,Positive,Low
+FB0354,Student Lounge,Other,Mixed,Medium
+FB0355,Wi-Fi Areas,Hardware,Neutral,Low
+FB0356,Wi-Fi Areas,Environment,Positive,Low
+FB0357,Classroom,Software,Positive,Low
+FB0358,Wi-Fi Areas,Environment,Mixed,Medium
+FB0359,Campus Entrance,Cleanliness,Positive,Low
+FB0360,Campus Entrance,Safety,Positive,Low
+FB0361,Computer Laboratory,Academic,Negative,Low
+FB0362,Library,Software,Negative,High
+FB0363,Parking Area,Transportation,Positive,Low
+FB0364,Student Lounge,Hardware,Negative,Medium
+FB0365,Wi-Fi Areas,Safety,Mixed,Medium
+FB0366,Wi-Fi Areas,Other,Negative,Medium
+FB0367,Cafeteria,Safety,Positive,Low
+FB0368,Cafeteria,Cleanliness,Mixed,Medium
+FB0369,Campus Entrance,Transportation,Negative,Medium
+FB0370,Classroom,Academic,Negative,Low
+FB0371,Library,Cleanliness,Negative,High
+FB0372,Parking Area,Transportation,Negative,Medium
+FB0373,Restroom,Cleanliness,Neutral,Low
+FB0374,Student Lounge,Safety,Negative,Low
+FB0375,Wi-Fi Areas,Internet,Negative,Medium
+FB0376,Cafeteria,Other,Neutral,Low
+FB0377,Campus Entrance,Facilities,Negative,High
+FB0378,Computer Laboratory,Other,Negative,Medium
+FB0379,Student Lounge,Food Service,Neutral,Low
+FB0380,Cafeteria,Safety,Mixed,Medium
+FB0381,Campus Entrance,Safety,Negative,Medium
+FB0382,Campus Entrance,Transportation,Negative,Medium
+FB0383,Computer Laboratory,Academic,Negative,Medium
+FB0384,Computer Laboratory,Cleanliness,Negative,High
+FB0385,Library,Other,Negative,Low
+FB0386,Library,Academic,Positive,Low
+FB0387,Parking Area,Other,Positive,Low
+FB0388,Student Lounge,Cleanliness,Mixed,Medium
+FB0389,Campus Entrance,Environment,Negative,High
+FB0390,Classroom,Facilities,Neutral,Low
+FB0391,Classroom,Hardware,Negative,High
+FB0392,Library,Academic,Mixed,Medium
+FB0393,Wi-Fi Areas,Environment,Negative,High
+FB0394,Classroom,Hardware,Neutral,Low
+FB0395,Library,Hardware,Mixed,Medium
+FB0396,Restroom,Safety,Negative,High
+FB0397,Restroom,Other,Negative,Medium
+FB0398,Wi-Fi Areas,Safety,Positive,Low
+FB0399,Cafeteria,Food Service,Negative,Medium
+FB0400,Classroom,Software,Neutral,Low
+FB0401,Computer Laboratory,Internet,Mixed,Medium
+FB0402,Library,Facilities,Neutral,Low
+FB0403,Parking Area,Facilities,Mixed,Medium
+FB0404,Restroom,Cleanliness,Negative,Medium
+FB0405,Wi-Fi Areas,Other,Positive,Low
+FB0406,Parking Area,Transportation,Neutral,Low
+FB0407,Restroom,Cleanliness,Positive,Low
+FB0408,Restroom,Safety,Neutral,Low
+FB0409,Student Lounge,Software,Mixed,Medium
+FB0410,Cafeteria,Other,Negative,Medium
+FB0411,Cafeteria,Environment,Negative,Medium
+FB0412,Campus Entrance,Food Service,Negative,Medium
+FB0413,Library,Academic,Negative,Medium
+FB0414,Library,Academic,Negative,Medium
+FB0415,Parking Area,Cleanliness,Positive,Low
+FB0416,Parking Area,Hardware,Negative,High
+FB0417,Restroom,Other,Mixed,Medium
+FB0418,Wi-Fi Areas,Facilities,Positive,Low
+FB0419,Wi-Fi Areas,Safety,Negative,Medium
+FB0420,Wi-Fi Areas,Software,Positive,Low
+FB0421,Cafeteria,Hardware,Negative,Medium
+FB0422,Campus Entrance,Food Service,Negative,Low
+FB0423,Computer Laboratory,Hardware,Positive,Low
+FB0424,Parking Area,Transportation,Negative,High
+FB0425,Student Lounge,Facilities,Negative,Low
+FB0426,Student Lounge,Academic,Positive,Low
+FB0427,Cafeteria,Safety,Neutral,Low
+FB0428,Campus Entrance,Hardware,Negative,Medium
+FB0429,Classroom,Environment,Positive,Low
+FB0430,Computer Laboratory,Hardware,Negative,Medium
+FB0431,Student Lounge,Software,Negative,Low
+FB0432,Wi-Fi Areas,Hardware,Positive,Low
+FB0433,Wi-Fi Areas,Software,Negative,High
+FB0434,Cafeteria,Internet,Positive,Low
+FB0435,Campus Entrance,Other,Negative,Medium
+FB0436,Campus Entrance,Transportation,Negative,Low
+FB0437,Computer Laboratory,Software,Positive,Low
+FB0438,Computer Laboratory,Environment,Negative,High
+FB0439,Computer Laboratory,Cleanliness,Positive,Low
+FB0440,Student Lounge,Safety,Mixed,Medium
+FB0441,Cafeteria,Software,Negative,Low
+FB0442,Cafeteria,Hardware,Negative,High
+FB0443,Campus Entrance,Software,Negative,High
+FB0444,Library,Hardware,Negative,Medium
+FB0445,Library,Internet,Negative,Medium
+FB0446,Parking Area,Transportation,Neutral,Low
+FB0447,Restroom,Facilities,Negative,Medium
+FB0448,Student Lounge,Academic,Neutral,Low
+FB0449,Campus Entrance,Hardware,Negative,Low
+FB0450,Classroom,Other,Negative,Medium
+FB0451,Computer Laboratory,Facilities,Negative,High
+FB0452,Computer Laboratory,Safety,Negative,Medium
+FB0453,Wi-Fi Areas,Hardware,Negative,Low
+FB0454,Wi-Fi Areas,Software,Positive,Low
+FB0455,Cafeteria,Environment,Positive,Low
+FB0456,Campus Entrance,Transportation,Positive,Low
+FB0457,Classroom,Internet,Negative,Low
+FB0458,Library,Software,Mixed,Medium
+FB0459,Library,Academic,Mixed,Medium
+FB0460,Restroom,Facilities,Neutral,Low
+FB0461,Restroom,Facilities,Positive,Low
+FB0462,Wi-Fi Areas,Other,Negative,Medium
+FB0463,Campus Entrance,Transportation,Negative,High
+FB0464,Classroom,Software,Negative,Low
+FB0465,Classroom,Facilities,Positive,Low
+FB0466,Computer Laboratory,Cleanliness,Negative,Medium
+FB0467,Computer Laboratory,Internet,Negative,Medium
+FB0468,Parking Area,Environment,Negative,Medium
+FB0469,Parking Area,Transportation,Positive,Low
+FB0470,Restroom,Other,Positive,Low
+FB0471,Student Lounge,Food Service,Negative,Low
+FB0472,Student Lounge,Internet,Negative,Low
+FB0473,Campus Entrance,Other,Mixed,Medium
+FB0474,Campus Entrance,Transportation,Mixed,Medium
+FB0475,Campus Entrance,Food Service,Neutral,Low
+FB0476,Classroom,Academic,Positive,Low
+FB0477,Computer Laboratory,Safety,Positive,Low
+FB0478,Computer Laboratory,Academic,Positive,Low
+FB0479,Restroom,Hardware,Positive,Low
+FB0480,Cafeteria,Software,Negative,Medium
+FB0481,Campus Entrance,Cleanliness,Negative,Medium
+FB0482,Classroom,Facilities,Negative,High
+FB0483,Classroom,Safety,Negative,Medium
+FB0484,Library,Cleanliness,Negative,Low
+FB0485,Parking Area,Facilities,Negative,High
+FB0486,Restroom,Safety,Negative,Medium
+FB0487,Student Lounge,Safety,Positive,Low
+FB0488,Student Lounge,Food Service,Negative,Medium
+FB0489,Student Lounge,Facilities,Negative,Medium
+FB0490,Student Lounge,Internet,Negative,High
+FB0491,Cafeteria,Other,Mixed,Medium
+FB0492,Cafeteria,Cleanliness,Negative,Low
+FB0493,Campus Entrance,Transportation,Mixed,Medium
+FB0494,Classroom,Environment,Negative,High
+FB0495,Library,Facilities,Positive,Low
+FB0496,Parking Area,Software,Negative,Medium
+FB0497,Restroom,Cleanliness,Negative,High
+FB0498,Student Lounge,Food Service,Neutral,Low
+FB0499,Wi-Fi Areas,Environment,Neutral,Low
+FB0500,Computer Laboratory,Facilities,Mixed,Medium
+FB0501,Library,Academic,Negative,High
+FB0502,Parking Area,Software,Mixed,Medium
+FB0503,Parking Area,Facilities,Negative,Medium
+FB0504,Student Lounge,Academic,Negative,Medium
+FB0505,Student Lounge,Other,Negative,Medium
+FB0506,Wi-Fi Areas,Hardware,Negative,High
+FB0507,Cafeteria,Software,Neutral,Low
+FB0508,Computer Laboratory,Environment,Mixed,Medium
+FB0509,Wi-Fi Areas,Internet,Mixed,Medium
+FB0510,Cafeteria,Safety,Negative,High
+FB0511,Cafeteria,Food Service,Negative,High
+FB0512,Campus Entrance,Food Service,Positive,Low
+FB0513,Campus Entrance,Hardware,Positive,Low
+FB0514,Campus Entrance,Safety,Neutral,Low
+FB0515,Classroom,Academic,Neutral,Low
+FB0516,Classroom,Cleanliness,Negative,Low
+FB0517,Restroom,Facilities,Negative,Medium
+FB0518,Student Lounge,Cleanliness,Negative,Low
+FB0519,Wi-Fi Areas,Software,Negative,Medium
+FB0520,Wi-Fi Areas,Software,Negative,Low
+FB0521,Campus Entrance,Other,Neutral,Low
+FB0522,Computer Laboratory,Safety,Neutral,Low
+FB0523,Computer Laboratory,Environment,Neutral,Low
+FB0524,Computer Laboratory,Hardware,Neutral,Low
+FB0525,Library,Academic,Negative,Low
+FB0526,Parking Area,Environment,Positive,Low
+FB0527,Student Lounge,Hardware,Mixed,Medium
+FB0528,Wi-Fi Areas,Facilities,Positive,Low
+FB0529,Cafeteria,Food Service,Negative,Medium
+FB0530,Classroom,Safety,Negative,Low
+FB0531,Classroom,Software,Negative,Medium
+FB0532,Classroom,Environment,Neutral,Low
+FB0533,Classroom,Internet,Negative,Medium
+FB0534,Classroom,Safety,Neutral,Low
+FB0535,Parking Area,Transportation,Mixed,Medium
+FB0536,Student Lounge,Cleanliness,Neutral,Low
+FB0537,Campus Entrance,Hardware,Negative,High
+FB0538,Campus Entrance,Environment,Positive,Low
+FB0539,Computer Laboratory,Academic,Negative,High
+FB0540,Computer Laboratory,Cleanliness,Neutral,Low
+FB0541,Library,Safety,Positive,Low
+FB0542,Library,Cleanliness,Positive,Low
+FB0543,Student Lounge,Academic,Negative,Medium
+FB0544,Student Lounge,Food Service,Negative,Medium
+FB0545,Library,Environment,Negative,Low
+FB0546,Library,Safety,Negative,Medium
+FB0547,Library,Safety,Negative,Low
+FB0548,Cafeteria,Software,Positive,Low
+FB0549,Classroom,Other,Negative,Medium
+FB0550,Computer Laboratory,Academic,Mixed,Medium
+FB0551,Library,Other,Neutral,Low
+FB0552,Restroom,Facilities,Negative,High
+FB0553,Wi-Fi Areas,Facilities,Neutral,Low
+FB0554,Wi-Fi Areas,Facilities,Negative,Low
+FB0555,Cafeteria,Food Service,Mixed,Medium
+FB0556,Campus Entrance,Facilities,Negative,Low
+FB0557,Classroom,Software,Mixed,Medium
+FB0558,Computer Laboratory,Safety,Negative,High
+FB0559,Library,Software,Neutral,Low
+FB0560,Parking Area,Other,Negative,Medium
+FB0561,Restroom,Hardware,Negative,Medium
+FB0562,Student Lounge,Other,Neutral,Low
+FB0563,Student Lounge,Cleanliness,Negative,High
+FB0564,Wi-Fi Areas,Other,Negative,Low
+FB0565,Wi-Fi Areas,Hardware,Positive,Low
+FB0566,Wi-Fi Areas,Internet,Mixed,Medium

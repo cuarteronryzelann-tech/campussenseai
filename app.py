@@ -81,10 +81,58 @@ def safe_load_and_clean(file_path_or_buffer):
         return None, f"Unexpected error while loading the dataset: {exc}"
 
 
-def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
+# Filters are relaxed in this order when nothing matches: least important first.
+RELAX_ORDER = [
+    ("filter_severity", "Severity"),
+    ("filter_sentiment", "Sentiment"),
+    ("filter_category", "Category"),
+    ("filter_date_range", "Date range"),
+    ("filter_location", "Location"),
+]
+
+
+def relax_filters(df: pd.DataFrame):
+    """
+    When the exact filter combination has no records, find the smallest relaxation that does:
+    drop one filter, then two, ... in RELAX_ORDER. Returns (DataFrame, [names of ignored filters]).
+    """
+    from itertools import combinations
+
+    active = [(k, label) for k, label in RELAX_ORDER
+              if st.session_state.get(k)]
+    for size in range(1, len(active) + 1):
+        for combo in combinations(active, size):
+            result = apply_filters(df, skip={k for k, _ in combo})
+            if not result.empty:
+                return result, [label for _, label in combo]
+    return df, [label for _, label in active]
+
+
+def explain_empty_filters(df: pd.DataFrame) -> str:
+    """Say how many records each selected filter matches ON ITS OWN, so it is clear which combination is empty."""
+    lines = []
+    for state_key, column, label in [
+        ("filter_location", "location", "Location"),
+        ("filter_category", "category", "Category"),
+        ("filter_sentiment", "sentiment", "Sentiment"),
+        ("filter_severity", "severity", "Severity"),
+    ]:
+        selected = st.session_state.get(state_key)
+        if selected and column in df.columns:
+            n = int(df[column].isin(selected).sum())
+            lines.append(f"- {label} ({', '.join(selected)}): {n} record(s) on its own")
+    hint = ""
+    sent, sev = st.session_state.get("filter_sentiment"), st.session_state.get("filter_severity")
+    if sent and sev and set(sent) <= {"Positive", "Neutral"} and set(sev) == {"High"}:
+        hint = "\n\nPositive or neutral feedback is almost never High severity (High means a serious problem)."
+    return "\n".join(lines) + hint
+
+
+def apply_filters(df: pd.DataFrame, skip=()) -> pd.DataFrame:
     """
     Apply the sidebar filters. An empty multiselect means "All".
     Category / sentiment / severity filters only take effect once the data is analyzed.
+    `skip` is a collection of filter state keys to ignore (used to relax an empty result).
     """
     if df is None or df.empty:
         return df
@@ -98,11 +146,11 @@ def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
         ("filter_severity", "severity"),
     ]:
         selected = st.session_state.get(state_key)
-        if selected and column in filtered.columns:
+        if state_key not in skip and selected and column in filtered.columns:
             filtered = filtered[filtered[column].isin(selected)]
 
     date_range = st.session_state.get("filter_date_range")
-    if date_range and len(date_range) == 2 and "date" in filtered.columns:
+    if "filter_date_range" not in skip and date_range and len(date_range) == 2 and "date" in filtered.columns:
         start, end = date_range
         filtered = filtered[
             (filtered["date"] >= pd.Timestamp(start)) & (filtered["date"] <= pd.Timestamp(end))
@@ -258,6 +306,13 @@ if analyze_clicked:
             st.session_state.analyzed_df = result_df
             progress_bar.progress(1.0, text="Analysis complete!")
             st.success("✅ Feedback analysis complete.")
+            if "analysis_error" in result_df.columns and result_df["analysis_error"].notna().any():
+                failed_rows = result_df[result_df["analysis_error"].notna()]
+                st.warning(
+                    f"⚠️ The AI model could not analyze {len(failed_rows)} of {len(result_df)} rows, so simple "
+                    "keyword rules were used for them (results are less accurate). "
+                    f"First error: {str(failed_rows['analysis_error'].iloc[0])[:300]}"
+                )
             analyzed = True
             base_df = result_df
         except AIAnalysisError as exc:
@@ -271,8 +326,18 @@ if analyze_clicked:
 filtered_df = apply_filters(base_df)
 
 if filtered_df.empty:
-    st.warning("No feedback matches the current filters. Try widening your filter selection.")
-    st.stop()
+    detail = explain_empty_filters(base_df)
+    relaxed_df, ignored = relax_filters(base_df)
+    if relaxed_df.empty:
+        st.warning("No feedback is available for this dataset.")
+        st.stop()
+    st.warning(
+        "No feedback matches ALL of the selected filters, so the closest results are shown instead "
+        f"(ignoring: {', '.join(ignored)})."
+    )
+    if detail:
+        st.caption("Each filter alone would match:\n\n" + detail)
+    filtered_df = relaxed_df
 
 datasets = build_datasets(filtered_df)
 

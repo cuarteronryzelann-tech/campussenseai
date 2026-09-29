@@ -1,61 +1,567 @@
 feedback_id,date,location,feedback
-FB0053,2026-06-02,Cafeteria,Staff at the cafeteria counter are always polite and quick with orders.
-FB0034,2026-06-07,Restroom,"Restroom floors are often wet and slippery, could be a safety hazard."
-FB0003,2026-06-09,Library,Several power outlets near the reading tables are broken and haven't been fixed in weeks.
-FB0044,2026-06-09,Library,I really appreciate how quiet and well-organized the library has become this semester.
-FB0032,2026-06-12,Library,"Book collection in the CS section is outdated, most titles are from over ten years ago."
-FB0036,2026-06-15,Library,Staff at the library help desk were very friendly and helped me find resources quickly.
-FB0056,2026-06-15,Restroom,"The renovated restrooms in the new wing are clean, modern, and well-stocked."
-FB0016,2026-06-18,Classroom,"Electrical outlets near the front of the room don't work, we can't charge our laptops."
-FB0029,2026-06-18,Campus Entrance,Guards at the entrance are courteous and help visitors find their way.
-FB0014,2026-06-19,Wi-Fi Areas,New mesh Wi-Fi system installed this semester covers the whole campus well.
-FB0037,2026-06-20,Library,"Air conditioning in the library is too weak during afternoon hours, it gets uncomfortably warm."
-FB0039,2026-06-21,Campus Entrance,New signage at the campus entrance makes navigation much clearer for visitors.
-FB0004,2026-06-28,Cafeteria,"Cafeteria ran out of food options by 1pm, students who arrive later have no choices left."
-FB0008,2026-06-28,Computer Laboratory,Several monitors in Lab 3 have dead pixels and flickering screens that strain the eyes.
-FB0028,2026-06-29,Restroom,"Restroom ventilation is poor, there's a persistent unpleasant smell most days."
-FB0017,2026-07-02,Classroom,The renovated classroom with new desks is much more comfortable than before.
-FB0050,2026-07-03,Student Lounge,"The lounge is a comfortable place to relax between classes, well maintained overall."
-FB0015,2026-07-04,Wi-Fi Areas,"Campus Wi-Fi disconnects constantly in the engineering building, very frustrating."
-FB0021,2026-07-04,Wi-Fi Areas,IT support responded quickly when I reported the Wi-Fi outage near the cafeteria.
-FB0002,2026-07-05,Computer Laboratory,New lab computers installed this semester are fast and run our software smoothly.
-FB0060,2026-07-05,Student Lounge,Vending machines in the student lounge are frequently out of stock or broken.
-FB0007,2026-07-11,Computer Laboratory,"Software licenses expired on several machines, we can't run our development tools anymore."
-FB0027,2026-07-17,Classroom,Projector in Room 204 keeps flickering and shutting off in the middle of lectures.
-FB0046,2026-07-19,Cafeteria,The new vegetarian options at the cafeteria are delicious and reasonably priced.
-FB0045,2026-07-20,Campus Entrance,"Sidewalk near the campus entrance is cracked and uneven, a tripping hazard."
-FB0011,2026-07-21,Campus Entrance,There is no shade or waiting area near the entrance during hot weather.
-FB0001,2026-07-22,Wi-Fi Areas,"Wi-Fi speed near the library is fast and reliable, great for downloading resources."
-FB0026,2026-07-22,Library,"The library Wi-Fi keeps disconnecting every few minutes, making it hard to research."
-FB0024,2026-07-25,Parking Area,"Drainage in the parking lot is poor, it floods heavily after any rain."
-FB0042,2026-07-25,Cafeteria,"Seating space in the cafeteria is not enough during peak hours, many students eat standing."
-FB0013,2026-07-29,Library,The new self-checkout kiosk for borrowing books is fast and very convenient.
-FB0048,2026-07-30,Parking Area,Security guards at the parking entrance are attentive and check IDs properly.
-FB0010,2026-08-03,Computer Laboratory,The lab technician replaced our mouse and keyboard right away when I reported the issue.
-FB0031,2026-08-03,Wi-Fi Areas,The IT department upgraded the Wi-Fi routers and the connection is much more stable now.
-FB0030,2026-08-05,Classroom,"The classroom chairs are broken and uncomfortable, some have loose screws."
-FB0049,2026-08-07,Student Lounge,"Trash isn't collected often enough in the lounge, bins overflow by midday."
-FB0020,2026-08-08,Classroom,The air conditioning unit makes a loud rattling noise that distracts during lectures.
-FB0058,2026-08-08,Cafeteria,The cafeteria added self-service water stations which is a nice convenient touch.
-FB0051,2026-08-10,Computer Laboratory,"Air conditioning in the computer lab is excellent, keeps the equipment and students cool."
-FB0019,2026-08-11,Campus Entrance,The entrance was recently repainted and looks much more welcoming now.
-FB0005,2026-08-12,Cafeteria,"Lines at the cafeteria during lunch hour are extremely long, sometimes over 30 minutes."
-FB0023,2026-08-14,Wi-Fi Areas,Too many students on the same Wi-Fi network causes it to slow down significantly.
-FB0025,2026-08-14,Wi-Fi Areas,"Connection near the gymnasium is nonexistent, we can't access online resources there."
-FB0043,2026-08-16,Computer Laboratory,The lab is well-maintained and the seats are comfortable for long programming sessions.
-FB0047,2026-08-16,Library,"There aren't enough charging stations for laptops in the library, especially near exam week."
-FB0038,2026-08-20,Classroom,"Lighting in the classroom is dim, making it hard to read slides from the back row."
-FB0012,2026-08-22,Parking Area,New parking lines and signage make it much easier to find a spot now.
-FB0009,2026-08-23,Student Lounge,The redesigned student lounge with bean bags and plants feels very inviting.
-FB0041,2026-08-27,Parking Area,"Parking area is full by 8am, students have to park far off campus and walk in."
-FB0054,2026-08-27,Computer Laboratory,"Internet connection in the computer lab drops constantly, especially during peak hours."
-FB0057,2026-08-27,Wi-Fi Areas,Wi-Fi in the dormitory areas is unreliable especially in the evening.
-FB0006,2026-08-31,Classroom,"Acoustics in the lecture hall are poor, it's hard to hear the professor from the back."
-FB0055,2026-09-01,Campus Entrance,"Traffic flow at the entrance is chaotic, tricycles and cars block each other constantly."
-FB0018,2026-09-04,Student Lounge,Wi-Fi signal in the student lounge is weak compared to other parts of campus.
-FB0022,2026-09-04,Parking Area,"Lighting in the parking area at night is very dim, feels unsafe walking to the car."
-FB0033,2026-09-05,Wi-Fi Areas,Wi-Fi coverage doesn't reach the outdoor benches near the quadrangle at all.
-FB0059,2026-09-05,Restroom,Restroom on the third floor has a broken faucet that has been leaking for days.
-FB0040,2026-09-10,Classroom,New whiteboards installed in the building are a huge improvement for lectures.
-FB0035,2026-09-19,Student Lounge,"The student lounge sofas are torn and worn out, they need replacement."
-FB0052,2026-09-19,Classroom,"Classroom is too small for the number of students enrolled, we barely have space."
+FB0001,2026-06-01,Campus Entrance,Just noting that the street food cart by the entrance is open from 7 am to 4 pm on weekdays.
+FB0002,2026-06-01,Campus Entrance,Please look into this: the fishball vendor at the gate sold food that made a number of students sick this week.
+FB0003,2026-06-01,Computer Laboratory,"FYI, the exam software installed on the lab computers now has a new login page with the same features."
+FB0004,2026-06-01,Library,I want to thank the staff because the online renewal page made my request so much faster this week.
+FB0005,2026-06-01,Parking Area,Just noting that the drop-off zone in the parking area will be adjusted during the school holiday.
+FB0006,2026-06-01,Restroom,"Just wanted to share that the sink area in the restroom was fixed quickly, thanks to the facilities office."
+FB0007,2026-06-01,Student Lounge,Just a heads up that the snack vending corner has raised prices again without any improvement.
+FB0008,2026-06-02,Campus Entrance,"I have both good and bad to say: the security check at the campus entrance has good security, but the response is slow."
+FB0009,2026-06-02,Campus Entrance,"Mixed feelings: the waiting shed is well cleaned, though the bins are not emptied often enough."
+FB0010,2026-06-02,Classroom,"For your information, the announcement process in the classroom moved to a new location as announced."
+FB0011,2026-06-02,Library,"The book reservation system in the library has a confusing layout, but it still works."
+FB0012,2026-06-02,Library,"The humidity around the book stacks has been bothering students for weeks, and it disrupts everyone working in the library."
+FB0013,2026-06-02,Restroom,Many of us have noticed that the floor near the sinks in the restroom has a minor issue that should be checked.
+FB0014,2026-06-02,Student Lounge,"Good news: the charging station in the student lounge was repaired quickly after I reported it, thank you for the effort."
+FB0015,2026-06-02,Student Lounge,"I have both good and bad to say: the study group arrangement is well organized, but it is announced too late."
+FB0016,2026-06-02,Student Lounge,I want to thank the staff because the exam review session schedule in the student lounge is well organized and easy to follow.
+FB0017,2026-06-02,Wi-Fi Areas,"The IT help desk booth in the Wi-Fi area is friendly, but the waiting time is long."
+FB0018,2026-06-03,Computer Laboratory,The practical exam arrangement is confusing and not well communicated.
+FB0019,2026-06-03,Library,"I have both good and bad to say: the ID validation window solved my problem, but I had to visit three times."
+FB0020,2026-06-03,Library,I saw a notice that the public desktop computer near the window in the library was moved to a different spot this week.
+FB0021,2026-06-03,Parking Area,"Honestly, the garbage collection point in the parking area could use a quick wipe now and then."
+FB0022,2026-06-03,Parking Area,"Just a heads up that the pedestrian crossing lane in the parking area is risky when it is crowded or rainy, which is a daily headache."
+FB0023,2026-06-03,Student Lounge,"Honestly, the lounge door has a serious structural problem that needs urgent repair."
+FB0024,2026-06-03,Student Lounge,Many of us have noticed that the sandwich stand in the student lounge sold food that made a number of students sick this week.
+FB0025,2026-06-03,Wi-Fi Areas,The router near the gym in the Wi-Fi area keeps malfunctioning and needs repair.
+FB0026,2026-06-04,Cafeteria,"Honestly, the wireless network at the far tables at the cafeteria occasionally lags for a moment, not a big problem."
+FB0027,2026-06-04,Computer Laboratory,"Honestly, the programming software license server in the computer lab has good features, but it logs me out too often."
+FB0028,2026-06-04,Computer Laboratory,The air quality is much better after the recent changes.
+FB0029,2026-06-04,Library,"Just a heads up that the elevator to the upper floors in the library has been closed for weeks because of serious damage, and it disrupts everyone working in the library."
+FB0030,2026-06-04,Library,The reference section shelf area in the library was inspected by the sanitation team this week.
+FB0031,2026-06-04,Parking Area,I saw a notice that the pedestrian crossing lane was reviewed by the safety officer this week.
+FB0032,2026-06-04,Restroom,"I would like to report that the restroom ceiling needs repainting, but it is not urgent."
+FB0033,2026-06-04,Restroom,Please look into this: the trash bin corner in the restroom has a bad smell by the afternoon.
+FB0034,2026-06-05,Cafeteria,Just wanted to share that the drinks counter at the cafeteria has friendly staff and quick service.
+FB0035,2026-06-05,Cafeteria,The floor near the counter at the cafeteria is cleaned every day at 5 pm according to the schedule.
+FB0036,2026-06-05,Cafeteria,The rice bowl station at the cafeteria could offer a few more choices.
+FB0037,2026-06-05,Cafeteria,The table area is often dirty and sticky.
+FB0038,2026-06-05,Cafeteria,The trash bin area at the cafeteria is always clean thanks to the cleaning staff.
+FB0039,2026-06-05,Classroom,"Honestly, the exam schedule is helpful, but there are too few sessions."
+FB0040,2026-06-05,Classroom,"Mixed feelings: the wireless network in the lecture hall is stable most of the time, though it sometimes fails during peak hours."
+FB0041,2026-06-05,Computer Laboratory,I want to thank the staff because the lab grouping arrangement is well organized and easy to follow.
+FB0042,2026-06-05,Parking Area,Just a heads up that the parking slot tracking app shows an annoying pop-up every time I open it.
+FB0043,2026-06-05,Parking Area,The ticket machine keeps malfunctioning and needs repair.
+FB0044,2026-06-08,Campus Entrance,"For your information, the heat at the gate was measured by the facilities office this week."
+FB0045,2026-06-08,Campus Entrance,"I have both good and bad to say: the gate log system has good features, but it logs me out too often."
+FB0046,2026-06-08,Campus Entrance,The fruit stand outside the gate added healthy options that students love.
+FB0047,2026-06-08,Computer Laboratory,Just a heads up that the lab announcement board process takes far too long to respond to requests.
+FB0048,2026-06-08,Computer Laboratory,"The lab grouping arrangement is good for my course, but it conflicts with my other class."
+FB0049,2026-06-08,Parking Area,Good news: the lighting at night in the parking area was recently improved and I feel much safer.
+FB0050,2026-06-08,Student Lounge,Many of us have noticed that the microwave meal station in the student lounge served spoiled food and several students had stomach aches afterwards.
+FB0051,2026-06-09,Campus Entrance,"Honestly, the snack stall near the gate has raised prices again without any improvement, and it affects everyone who comes in through the gate."
+FB0052,2026-06-09,Campus Entrance,Just noting that the morning entry arrangement at the gate was adjusted this week according to the posted notice.
+FB0053,2026-06-09,Classroom,"Just a heads up that the desk area at the back is filthy and unsanitary, which is a health risk."
+FB0054,2026-06-09,Computer Laboratory,"Honestly, the storage cabinet in the computer lab was fixed quickly, thanks to the facilities office."
+FB0055,2026-06-09,Parking Area,I would like to report that the parking slot allocation is very congested during the morning rush.
+FB0056,2026-06-09,Student Lounge,"I have both good and bad to say: the Wi-Fi signal near the sofas in the student lounge is stable most of the time, though it sometimes fails during peak hours."
+FB0057,2026-06-09,Wi-Fi Areas,The covered walkway in the Wi-Fi area is in bad condition and uncomfortable to use.
+FB0058,2026-06-10,Classroom,"Honestly, the room assignment for classes is often changed without enough notice, which affects the whole class."
+FB0059,2026-06-10,Classroom,I would like to report that the electrical outlet near the front is a serious hazard and someone could get badly hurt.
+FB0060,2026-06-10,Computer Laboratory,"I want to thank the staff because the network speed during programming sessions has improved a lot this semester, which really helps students."
+FB0061,2026-06-10,Computer Laboratory,"Please look into this: the noise level from the hallway in the computer lab has been bothering students for weeks, which slows down the whole class."
+FB0062,2026-06-10,Parking Area,"The motorcycle parking section could use clearer signs, but it is manageable."
+FB0063,2026-06-10,Student Lounge,"The student council desk in the student lounge has unclear signage, a minor issue."
+FB0064,2026-06-10,Wi-Fi Areas,The connection near the gymnasium has improved a lot this semester.
+FB0065,2026-06-10,Wi-Fi Areas,"The shaded seating near the quadrangle is comfortable, but it is in poor shape in some corners."
+FB0066,2026-06-11,Cafeteria,The refrigerator display makes a strange noise but still works.
+FB0067,2026-06-11,Restroom,"Just a heads up that the humidity in the restroom is slightly off on some days, a minor thing."
+FB0068,2026-06-11,Student Lounge,I would like to report that the air quality has become unbearable and is affecting students' health.
+FB0069,2026-06-11,Student Lounge,"The lounge sofa area is comfortable, but it is in poor shape in some corners."
+FB0070,2026-06-11,Wi-Fi Areas,Many of us have noticed that the outdoor power box poses an immediate danger and should be closed until fixed.
+FB0071,2026-06-12,Classroom,"Honestly, the attendance system in the classroom failed during the exam and erased our answers."
+FB0072,2026-06-12,Computer Laboratory,Just noting that the Wi-Fi signal inside the lab was checked by the IT staff during their regular inspection.
+FB0073,2026-06-12,Library,Many of us have noticed that the reservation arrangement for discussion rooms is confusing and not well communicated.
+FB0074,2026-06-12,Parking Area,"Many of us have noticed that the motorcycle parking section is dangerously chaotic, and near-accidents happen every week."
+FB0075,2026-06-12,Parking Area,The perimeter fence in the parking area was renovated and looks great.
+FB0076,2026-06-15,Classroom,Many of us have noticed that the window sill is often dirty and sticky.
+FB0077,2026-06-15,Computer Laboratory,"I have both good and bad to say: the emergency exit path in the computer lab is better after the recent upgrade, but some parts are still risky."
+FB0078,2026-06-15,Computer Laboratory,The programming software license server in the computer lab takes a few extra clicks to do simple things.
+FB0079,2026-06-15,Library,"I would like to report that the reservation arrangement for discussion rooms was announced too late, so many students missed it completely."
+FB0080,2026-06-15,Library,"The Wi-Fi signal on the second floor in the library is very slow, and pages take more than a minute to load."
+FB0081,2026-06-15,Parking Area,Please look into this: the car entry arrangement is disorganized and wastes a lot of time.
+FB0082,2026-06-15,Restroom,Many of us have noticed that the notice posting process in the restroom gives confusing and inconsistent instructions.
+FB0083,2026-06-15,Restroom,The lighting level in the restroom has been bothering students for weeks.
+FB0084,2026-06-15,Wi-Fi Areas,Just noting that the floor of the covered walkway in the Wi-Fi area is included in the safety checklist for this month.
+FB0085,2026-06-16,Cafeteria,Please look into this: the noodle station at the cafeteria serves cold food and small portions for the price.
+FB0086,2026-06-16,Computer Laboratory,The ceiling panel above the third row in the computer lab is damaged and needs repair.
+FB0087,2026-06-16,Computer Laboratory,"The room temperature could be better, though it does not bother me much."
+FB0088,2026-06-16,Parking Area,"Honestly, the pavement in the parking area could be safer, but nothing has happened so far."
+FB0089,2026-06-16,Student Lounge,Good news: the noise level is pleasant and perfect for studying.
+FB0090,2026-06-16,Student Lounge,"The peer tutoring schedule in the student lounge could be a bit clearer, but it is manageable."
+FB0091,2026-06-17,Campus Entrance,The ID scanning software now has a new login page with the same features.
+FB0092,2026-06-17,Parking Area,"The parking shed floor is filthy and unsanitary, which is a health risk."
+FB0093,2026-06-17,Student Lounge,"Please look into this: the temperature in the student lounge could be better, though it does not bother me much."
+FB0094,2026-06-18,Cafeteria,The dining table section is worn out and needs to be replaced.
+FB0095,2026-06-18,Cafeteria,The dining table section will be closed for two hours on Friday for inspection.
+FB0096,2026-06-18,Campus Entrance,"Mixed feelings: the shuttle service at the campus entrance is well managed, but it is too small for the number of students."
+FB0097,2026-06-18,Classroom,"Mixed feelings: the assignment deadline arrangement in the classroom is well organized, but it is announced too late."
+FB0098,2026-06-18,Computer Laboratory,"FYI, the equipment borrowing counter in the computer lab will have shorter hours during the holiday break."
+FB0099,2026-06-18,Computer Laboratory,"The internet connection at the workstations is much more reliable after the recent upgrade, which really helps students."
+FB0100,2026-06-18,Restroom,"For your information, the reporting process for issues in the restroom moved to a new location as announced."
+FB0101,2026-06-18,Student Lounge,"Please look into this: the study group arrangement is often changed without enough notice, which defeats the purpose of the lounge."
+FB0102,2026-06-18,Student Lounge,Please look into this: the tile flooring in the student lounge poses an immediate danger and should be closed until fixed.
+FB0103,2026-06-18,Student Lounge,"The snack vending corner in the student lounge is cheap and friendly, though it often runs out of drinks."
+FB0104,2026-06-19,Campus Entrance,Just noting that the metal detector at the campus entrance was moved to a different spot this week.
+FB0105,2026-06-19,Classroom,"The connection for online class sessions in the classroom often shows no internet even when the device is connected, which affects the whole class."
+FB0106,2026-06-19,Student Lounge,Please look into this: the lost and found box process takes far too long to respond to requests.
+FB0107,2026-06-19,Student Lounge,The lounge reservation system was updated and works much better than before.
+FB0108,2026-06-22,Cafeteria,"Honestly, the main meal counter at the cafeteria added healthy options that students love."
+FB0109,2026-06-22,Campus Entrance,"The tricycle waiting arrangement at the gate is dangerously chaotic, and near-accidents happen every week."
+FB0110,2026-06-22,Classroom,"Honestly, the classroom floor looks better than before, but the corners are still dusty."
+FB0111,2026-06-22,Classroom,"The internet connection during online quizzes in the classroom has been unusable for days, so nobody can submit requirements online."
+FB0112,2026-06-22,Computer Laboratory,Many of us have noticed that the computer in the third row in the computer lab makes a strange noise but still works.
+FB0113,2026-06-22,Wi-Fi Areas,The wireless network in the dormitory area in the Wi-Fi area is scheduled for a routine check this weekend.
+FB0114,2026-06-23,Cafeteria,The serving counter at the cafeteria has a serious structural problem that needs urgent repair.
+FB0115,2026-06-23,Computer Laboratory,"I would like to report that the exam software installed on the lab computers often shows errors when I try to log in, so we cannot finish our exercises on time."
+FB0116,2026-06-23,Computer Laboratory,The lab session schedule is posted on the bulletin board for next week.
+FB0117,2026-06-23,Parking Area,"The drop-off zone does not have enough capacity for the number of students, and it makes coming to campus stressful."
+FB0118,2026-06-23,Wi-Fi Areas,"Honestly, the outdoor bench area in the Wi-Fi area is in bad condition and uncomfortable to use."
+FB0119,2026-06-23,Wi-Fi Areas,"Honestly, the support ticket process in the Wi-Fi area improved a lot this semester."
+FB0120,2026-06-23,Wi-Fi Areas,"The Wi-Fi signal at the quadrangle is a little slow sometimes, but still usable."
+FB0121,2026-06-24,Cafeteria,"Honestly, the temperature during lunch at the cafeteria is fine in the morning but gets uncomfortable in the afternoon."
+FB0122,2026-06-24,Classroom,"I appreciate that the lecture schedule helped me prepare for my exams much better, thank you for the effort."
+FB0123,2026-06-24,Classroom,"Please look into this: the humidity in the classroom could be better, though it does not bother me much."
+FB0124,2026-06-24,Classroom,The electric fan at the back is old and breaks down often.
+FB0125,2026-06-24,Library,The consultation schedule with librarians in the library will start after the midterm exams.
+FB0126,2026-06-24,Library,"The group study room door was fixed recently, though it still needs some work."
+FB0127,2026-06-24,Parking Area,"The guard station help desk solved my problem, but I had to visit three times."
+FB0128,2026-06-24,Student Lounge,The temperature is fine in the morning but gets uncomfortable in the afternoon.
+FB0129,2026-06-25,Campus Entrance,I would like to report that the entrance waiting shed is worn out and needs to be replaced.
+FB0130,2026-06-25,Campus Entrance,Just a heads up that the fruit stand outside the gate served spoiled food and several students had stomach aches afterwards.
+FB0131,2026-06-25,Classroom,"Honestly, the room assignment for classes is so disorganized that many students may miss required exams, which affects the whole class."
+FB0132,2026-06-25,Student Lounge,"Honestly, the microwave meal station has tasty food, but the line is very slow."
+FB0133,2026-06-25,Student Lounge,The noise level in the student lounge is being monitored as part of the sustainability program.
+FB0134,2026-06-26,Cafeteria,Good news: the cafeteria roof is now comfortable and well-maintained.
+FB0135,2026-06-26,Cafeteria,"Mixed feelings: the seating area at the cafeteria was fixed recently, though it still needs some work."
+FB0136,2026-06-26,Campus Entrance,The dust level at the campus entrance is good in some areas and bad in others.
+FB0137,2026-06-26,Restroom,"I have both good and bad to say: the tile floor by the entrance is comfortable, but it is in poor shape in some corners."
+FB0138,2026-06-29,Cafeteria,I have both good and bad to say: the Wi-Fi signal in the dining area works well near the entrance but drops further inside.
+FB0139,2026-06-29,Cafeteria,"Just a heads up that the wireless network at the far tables becomes unreliable whenever many students are online, so many students end up going off campus."
+FB0140,2026-06-29,Campus Entrance,"The shuttle service at the campus entrance is slightly crowded at times, not a big issue."
+FB0141,2026-06-29,Classroom,"The classroom microphone was repaired last week, though the same problem appeared again."
+FB0142,2026-06-29,Library,The temperature on the upper floor in the library has improved a lot and feels comfortable now.
+FB0143,2026-06-29,Restroom,"I have both good and bad to say: the restroom floor looks better than before, but the corners are still dusty."
+FB0144,2026-06-29,Restroom,The sink area in the restroom is always clean thanks to the cleaning staff.
+FB0145,2026-06-29,Wi-Fi Areas,"Just a heads up that the dust level is uncomfortable for most of the afternoon, and it affects students who study outdoors."
+FB0146,2026-06-30,Campus Entrance,"Mixed feelings: the street food cart by the entrance serves good meals, but the seating is limited."
+FB0147,2026-06-30,Computer Laboratory,"Just a heads up that the ceiling panel above the third row needs repainting, but it is not urgent."
+FB0148,2026-06-30,Computer Laboratory,"The lab printer works well when it works, but it often needs a restart."
+FB0149,2026-06-30,Parking Area,"Honestly, the parking slot allocation does not have enough capacity for the number of students."
+FB0150,2026-06-30,Parking Area,"The ticket machine in the parking area is a bit loose and wobbly, but usable."
+FB0151,2026-06-30,Restroom,I appreciate that the odor level is much better after the recent changes.
+FB0152,2026-06-30,Student Lounge,I saw a notice that the internet connection at the lounge tables was reported to the IT office and logged for review.
+FB0153,2026-06-30,Wi-Fi Areas,Just a heads up that the access point on the quadrangle is old and breaks down often.
+FB0154,2026-07-01,Parking Area,I saw a notice that the temperature under the shed in the parking area is scheduled for review by the campus committee.
+FB0155,2026-07-01,Parking Area,The sticker claiming window in the parking area will have shorter hours during the holiday break.
+FB0156,2026-07-02,Campus Entrance,Please look into this: the coffee stall beside the guard house has raised prices again without any improvement.
+FB0157,2026-07-02,Campus Entrance,"The jeepney drop-off area works smoothly even during rush hour, thank you for the effort."
+FB0158,2026-07-02,Campus Entrance,The tricycle waiting arrangement at the gate was adjusted this week according to the posted notice.
+FB0159,2026-07-02,Computer Laboratory,"The lab session schedule is so disorganized that many students may miss required exams, so we cannot finish our exercises on time."
+FB0160,2026-07-02,Parking Area,"I would like to report that the dust level in the parking area is a little uncomfortable at times, but bearable."
+FB0161,2026-07-02,Parking Area,"Many of us have noticed that the shuttle pickup point in the parking area is slightly crowded at times, not a big issue."
+FB0162,2026-07-02,Parking Area,"The lost and found request process in the parking area has unclear signage, a minor issue."
+FB0163,2026-07-02,Parking Area,The shuttle pickup point in the parking area is completely blocked in the morning and students miss their first classes.
+FB0164,2026-07-02,Restroom,"Honestly, the automatic faucet keeps malfunctioning and needs repair."
+FB0165,2026-07-02,Wi-Fi Areas,"Honestly, the account assistance window in the Wi-Fi area is poorly organized and nobody knows who is in charge."
+FB0166,2026-07-02,Wi-Fi Areas,Please look into this: the outdoor power box has been unsafe for a while and needs attention.
+FB0167,2026-07-02,Wi-Fi Areas,"The account verification page for the network is easy to navigate, but it is very slow at peak times."
+FB0168,2026-07-03,Cafeteria,The exit path during the lunch rush has a minor issue that should be checked.
+FB0169,2026-07-03,Computer Laboratory,"Honestly, the keyboard area at the stations is clean in the morning, but it gets dirty quickly by afternoon."
+FB0170,2026-07-03,Computer Laboratory,"Please look into this: the electrical wiring near the workstations is a little worn, but no one has been hurt."
+FB0171,2026-07-03,Computer Laboratory,"The internet connection at the workstations is dead for most of the day, which is stopping our online classes."
+FB0172,2026-07-03,Computer Laboratory,"The lab assistant desk is friendly, but the waiting time is long."
+FB0173,2026-07-03,Student Lounge,"The internet connection at the lounge tables is fast and stable now, great for research."
+FB0174,2026-07-06,Student Lounge,"Many of us have noticed that the charging locker app in the student lounge has been down for days, so required tasks cannot be completed."
+FB0175,2026-07-06,Student Lounge,Many of us have noticed that the lighting level in the student lounge gets worse every time the weather changes.
+FB0176,2026-07-06,Student Lounge,Many of us have noticed that the wireless network in the lounge corner keeps disconnecting every few minutes.
+FB0177,2026-07-06,Student Lounge,"The drinks vending machine in the student lounge sometimes runs out of change, a minor inconvenience."
+FB0178,2026-07-07,Cafeteria,Just a heads up that the lost and found station at the cafeteria gives confusing and inconsistent instructions.
+FB0179,2026-07-07,Campus Entrance,"Just a heads up that the information desk at the campus entrance has unclear signage, a minor issue."
+FB0180,2026-07-07,Campus Entrance,Many of us have noticed that the noise level from traffic gets worse every time the weather changes.
+FB0181,2026-07-07,Classroom,"Good news: the room request process improved a lot this semester, and I hope it stays this way."
+FB0182,2026-07-07,Classroom,"I want to thank the staff because the wireless network in the lecture hall is much more reliable after the recent upgrade, and I hope it stays this way."
+FB0183,2026-07-07,Classroom,"The wall-mounted speaker in the classroom is in great condition thanks to the maintenance team, which really helps students."
+FB0184,2026-07-07,Library,"Good news: the internet connection at the reading tables worked perfectly during my online class today, thank you for the effort."
+FB0185,2026-07-07,Library,Just a heads up that the lost and found counter is often closed or unattended when we need help.
+FB0186,2026-07-07,Parking Area,The entrance barrier gate was moved to a different spot this week.
+FB0187,2026-07-07,Wi-Fi Areas,Just noting that the support ticket process in the Wi-Fi area will have shorter hours during the holiday break.
+FB0188,2026-07-08,Cafeteria,"Honestly, the cashless payment system at the cafeteria is easy to navigate, but it is very slow at peak times."
+FB0189,2026-07-08,Cafeteria,I would like to report that the internet connection near the counter keeps disconnecting every few minutes.
+FB0190,2026-07-08,Classroom,"I would like to report that the window frame is a little worn, but still usable."
+FB0191,2026-07-08,Classroom,Mixed feelings: the air circulation is good in some areas and bad in others.
+FB0192,2026-07-08,Classroom,"The classroom door was fixed recently, though it still needs some work."
+FB0193,2026-07-08,Computer Laboratory,The desk surface at the workstations in the computer lab could use a quick wipe now and then.
+FB0194,2026-07-08,Library,Just a heads up that the library help desk gives confusing and inconsistent instructions.
+FB0195,2026-07-08,Parking Area,"Please look into this: the shuttle pickup point in the parking area is a bit far from the buildings, but okay."
+FB0196,2026-07-08,Wi-Fi Areas,"Please look into this: the wireless network in the dormitory area in the Wi-Fi area is dead for most of the day, which is stopping our online classes."
+FB0197,2026-07-09,Parking Area,The online parking permit page was updated to a new version according to the announcement.
+FB0198,2026-07-09,Student Lounge,The peer tutoring schedule is so disorganized that many students may miss required exams.
+FB0199,2026-07-10,Cafeteria,"For your information, the temperature during lunch was measured by the facilities office this week."
+FB0200,2026-07-10,Cafeteria,The main meal counter at the cafeteria is open from 7 am to 4 pm on weekdays.
+FB0201,2026-07-10,Cafeteria,The refrigerator display at the cafeteria was repaired quickly after I reported it.
+FB0202,2026-07-10,Campus Entrance,"To be fair, the ID scanner was repaired last week, though the same problem appeared again."
+FB0203,2026-07-10,Computer Laboratory,The lab grouping arrangement is confusing and not well communicated.
+FB0204,2026-07-10,Library,"Mixed feelings: the reference section shelf area in the library is well cleaned, though the bins are not emptied often enough."
+FB0205,2026-07-10,Restroom,Just a heads up that the humidity in the restroom got worse this week and students are asking to be moved elsewhere.
+FB0206,2026-07-13,Campus Entrance,Many of us have noticed that the lost and found counter at the campus entrance gives confusing and inconsistent instructions.
+FB0207,2026-07-13,Library,The air quality in the reading room has become unbearable and is affecting students' health.
+FB0208,2026-07-13,Parking Area,"The motorcycle shelter in the parking area is a little worn, but still usable."
+FB0209,2026-07-13,Parking Area,"The noise level from the road in the parking area reaches dangerous levels, and some students felt dizzy or faint."
+FB0210,2026-07-13,Restroom,The maintenance request form is poorly organized and nobody knows who is in charge.
+FB0211,2026-07-13,Student Lounge,"For your information, the glass door was reviewed by the safety officer this week."
+FB0212,2026-07-13,Wi-Fi Areas,"Honestly, the account verification page for the network in the Wi-Fi area often shows errors when I try to log in, so we cannot rely on it between classes."
+FB0213,2026-07-13,Wi-Fi Areas,The antenna mount above the bench was fixed right after we reported it.
+FB0214,2026-07-14,Cafeteria,Just noting that the drinks counter is open from 7 am to 4 pm on weekdays.
+FB0215,2026-07-14,Cafeteria,"Please look into this: the electrical wiring near the refrigerator at the cafeteria has been reported before, but nothing was done."
+FB0216,2026-07-14,Cafeteria,"The suggestion box process sometimes has a short line, nothing serious."
+FB0217,2026-07-14,Campus Entrance,I appreciate that the information desk has friendly staff who solved my problem right away.
+FB0218,2026-07-14,Campus Entrance,"I have both good and bad to say: the fishball vendor at the gate serves good meals, but the seating is limited."
+FB0219,2026-07-14,Campus Entrance,The fishball vendor at the gate has a very long line that takes more than 20 minutes.
+FB0220,2026-07-14,Campus Entrance,"The morning entry arrangement at the gate is dangerously chaotic, and near-accidents happen every week."
+FB0221,2026-07-14,Campus Entrance,The tricycle terminal near the gate is disorganized and wastes a lot of time.
+FB0222,2026-07-14,Classroom,"Please look into this: the electric fan at the back in the classroom is a bit loose and wobbly, but usable."
+FB0223,2026-07-14,Classroom,"The lost and found counter of the building in the classroom has unclear signage, a minor issue."
+FB0224,2026-07-14,Parking Area,Please look into this: the CCTV coverage already caused an injury this week.
+FB0225,2026-07-15,Cafeteria,"Mixed feelings: the rice warmer works well when it works, but it often needs a restart."
+FB0226,2026-07-15,Cafeteria,"The bakery stand sometimes runs out of change, a minor inconvenience."
+FB0227,2026-07-15,Cafeteria,"The queue number system at the cafeteria has been down for days, so required tasks cannot be completed."
+FB0228,2026-07-15,Campus Entrance,The area around the guard house at the campus entrance could use a quick wipe now and then.
+FB0229,2026-07-15,Parking Area,Please look into this: the drainage area in the parking area has a bad smell by the afternoon.
+FB0230,2026-07-15,Student Lounge,The event sign-up page keeps logging users out in the middle of a task.
+FB0231,2026-07-15,Student Lounge,The vending machine has a small crack that does not affect use yet.
+FB0232,2026-07-15,Wi-Fi Areas,"The covered walkway is badly damaged and unusable, so students have nowhere else to go."
+FB0233,2026-07-16,Campus Entrance,"I would like to report that the morning entry arrangement at the gate often causes delays, making students late for class."
+FB0234,2026-07-16,Classroom,Please look into this: the assignment deadline arrangement in the classroom is confusing and not well communicated.
+FB0235,2026-07-16,Library,Many of us have noticed that the carpet near the entrance is often dirty and sticky.
+FB0236,2026-07-16,Library,Many of us have noticed that the photocopier near the entrance broke down in the middle of exam week and there is no replacement.
+FB0237,2026-07-16,Parking Area,Please look into this: the lost and found request process in the parking area is often closed or unattended when we need help.
+FB0238,2026-07-16,Student Lounge,"Honestly, the suggestion box process in the student lounge was quick and helpful when I needed assistance."
+FB0239,2026-07-16,Wi-Fi Areas,"Just a heads up that the internet speed at the outdoor benches often shows no internet even when the device is connected, and it affects students who study outdoors."
+FB0240,2026-07-17,Cafeteria,"The noise level at lunch is a little uncomfortable at times, but bearable."
+FB0241,2026-07-17,Campus Entrance,I want to thank the staff because the gate log system was updated and works much better than before.
+FB0242,2026-07-17,Campus Entrance,"The tricycle waiting arrangement at the gate often causes delays, making students late for class."
+FB0243,2026-07-17,Student Lounge,The lounge door will be closed for two hours on Friday for inspection.
+FB0244,2026-07-17,Wi-Fi Areas,The heat in the open quadrangle is pleasant and perfect for studying.
+FB0245,2026-07-20,Campus Entrance,"FYI, the jeepney drop-off area at the campus entrance was adjusted this week according to the posted notice."
+FB0246,2026-07-20,Classroom,Just a heads up that the classroom temperature has been bothering students for weeks.
+FB0247,2026-07-20,Classroom,"To be fair, the staircase outside the room was fixed, though a small hazard remains."
+FB0248,2026-07-20,Computer Laboratory,Many of us have noticed that the lab login system failed during the exam and erased our answers.
+FB0249,2026-07-20,Library,Just a heads up that the ceiling above the periodicals section has been out of order for weeks.
+FB0250,2026-07-20,Restroom,"For your information, the hand dryer was checked by the maintenance team this week."
+FB0251,2026-07-20,Restroom,"Honestly, the lighting level in the restroom is good in some areas and bad in others."
+FB0252,2026-07-20,Student Lounge,"I want to thank the staff because the microwave meal station added healthy options that students love, and I hope it stays this way."
+FB0253,2026-07-20,Student Lounge,The event sign-up page in the student lounge now has a new login page with the same features.
+FB0254,2026-07-20,Wi-Fi Areas,"Honestly, the Wi-Fi signal at the quadrangle keeps disconnecting every few minutes."
+FB0255,2026-07-20,Wi-Fi Areas,The Wi-Fi login portal in the Wi-Fi area was updated to a new version according to the announcement.
+FB0256,2026-07-21,Cafeteria,Just noting that the water dispenser at the cafeteria was checked by the maintenance team this week.
+FB0257,2026-07-21,Computer Laboratory,"Please look into this: the lab announcement board process could be a bit faster, but it works."
+FB0258,2026-07-21,Restroom,"I have both good and bad to say: the floor near the sinks in the restroom was fixed, though a small hazard remains."
+FB0259,2026-07-21,Student Lounge,The water dispenser in the student lounge burned out and is now unusable.
+FB0260,2026-07-22,Cafeteria,"Honestly, the Wi-Fi signal in the dining area is dead for most of the day, which is stopping our online classes."
+FB0261,2026-07-22,Classroom,Just wanted to share that the fire exit in the classroom is well maintained and secure.
+FB0262,2026-07-22,Classroom,"The lecture schedule in the classroom keeps changing at the last minute, which is ruining our preparation."
+FB0263,2026-07-22,Computer Laboratory,Many of us have noticed that the network speed during programming sessions in the computer lab often shows no internet even when the device is connected.
+FB0264,2026-07-22,Library,I saw a notice that the stairwell in the library will be inspected during the fire drill on Thursday.
+FB0265,2026-07-22,Library,I saw a notice that the temperature on the upper floor in the library is scheduled for review by the campus committee.
+FB0266,2026-07-22,Restroom,"For your information, the air quality in the restroom was measured by the facilities office this week."
+FB0267,2026-07-22,Restroom,"I have both good and bad to say: the automatic faucet in the restroom is fast, but the buttons are worn out."
+FB0268,2026-07-22,Student Lounge,"Just a heads up that the Wi-Fi signal near the sofas is very slow, and pages take more than a minute to load."
+FB0269,2026-07-22,Wi-Fi Areas,"I have both good and bad to say: the network cabinet in the Wi-Fi area was repaired last week, though the same problem appeared again."
+FB0270,2026-07-22,Wi-Fi Areas,The connection near the gymnasium worked perfectly during my online class today.
+FB0271,2026-07-23,Campus Entrance,I saw a notice that the garbage spot near the gate is cleaned every day at 5 pm according to the schedule.
+FB0272,2026-07-23,Campus Entrance,"Many of us have noticed that the air quality from vehicle exhaust at the campus entrance is a little uncomfortable at times, but bearable."
+FB0273,2026-07-23,Computer Laboratory,"FYI, the laboratory door was rearranged as announced last week."
+FB0274,2026-07-23,Computer Laboratory,The projector at the front of the lab is completely broken and nobody has fixed it since the start of the month.
+FB0275,2026-07-23,Library,"Mixed feelings: the stairwell has good security, but the response is slow."
+FB0276,2026-07-23,Parking Area,"Honestly, the lamp post controller in the parking area works well when it works, but it often needs a restart."
+FB0277,2026-07-23,Parking Area,"The dust level in the parking area improved after the changes, but it is still a problem at peak times."
+FB0278,2026-07-23,Restroom,Just a heads up that the lighting inside the restroom is risky when it is crowded or rainy.
+FB0279,2026-07-24,Cafeteria,"Honestly, the bakery stand is cheap and friendly, though it often runs out of drinks."
+FB0280,2026-07-24,Campus Entrance,"The shuttle service is a bit far from the buildings, but okay."
+FB0281,2026-07-24,Classroom,The classroom floor is cleaned every day at 5 pm according to the schedule.
+FB0282,2026-07-24,Library,"Honestly, the group study room door needs repainting, but it is not urgent."
+FB0283,2026-07-24,Library,Mixed feelings: the noise level near the entrance is good in some areas and bad in others.
+FB0284,2026-07-24,Restroom,"Many of us have noticed that the maintenance request form sometimes has a short line, nothing serious."
+FB0285,2026-07-24,Wi-Fi Areas,The dust level in the Wi-Fi area gets worse every time the weather changes.
+FB0286,2026-07-27,Cafeteria,I want to thank the staff because the Wi-Fi signal in the dining area has improved a lot this semester.
+FB0287,2026-07-27,Campus Entrance,"Just a heads up that the security check could be safer, but nothing has happened so far."
+FB0288,2026-07-27,Classroom,"Please look into this: the ceiling in Room 301 has been out of order for weeks, which affects the whole class."
+FB0289,2026-07-27,Parking Area,"FYI, the drainage area is cleaned every day at 5 pm according to the schedule."
+FB0290,2026-07-27,Restroom,"Honestly, the air quality in the restroom is uncomfortable for most of the afternoon."
+FB0291,2026-07-27,Restroom,The door latch is well maintained and secure.
+FB0292,2026-07-27,Student Lounge,I appreciate that the floor is much cleaner than last semester.
+FB0293,2026-07-27,Student Lounge,"I appreciate that the internet connection at the lounge tables worked perfectly during my online class today, and I hope it stays this way."
+FB0294,2026-07-28,Cafeteria,"FYI, the internet connection near the counter at the cafeteria was reported to the IT office and logged for review."
+FB0295,2026-07-28,Cafeteria,"Many of us have noticed that the cafeteria roof is a little worn, but still usable."
+FB0296,2026-07-28,Campus Entrance,"Many of us have noticed that the sidewalk already caused an injury this week, and it affects everyone who comes in through the gate."
+FB0297,2026-07-28,Campus Entrance,"The main gate is comfortable, but it is in poor shape in some corners."
+FB0298,2026-07-28,Library,The wireless network in the periodicals section in the library worked perfectly during my online class today.
+FB0299,2026-07-28,Parking Area,I saw a notice that the parking lot pavement was rearranged as announced last week.
+FB0300,2026-07-28,Student Lounge,"The peer tutoring schedule was announced too late, so many students missed it completely."
+FB0301,2026-07-28,Student Lounge,The trash bin area in the student lounge is often dirty and sticky.
+FB0302,2026-07-29,Campus Entrance,The ID scanning software at the campus entrance keeps logging users out in the middle of a task.
+FB0303,2026-07-29,Library,"For your information, the online journal access was checked by the IT staff during their regular inspection."
+FB0304,2026-07-29,Library,"Just wanted to share that the suggestion box process in the library has friendly staff who solved my problem right away, and I hope it stays this way."
+FB0305,2026-07-29,Parking Area,"Honestly, the pavement in the parking area has good security, but the response is slow."
+FB0306,2026-07-29,Parking Area,"Mixed feelings: the garbage collection point is clean in the morning, but it gets dirty quickly by afternoon."
+FB0307,2026-07-29,Student Lounge,"Honestly, the exam review session schedule in the student lounge is good for my course, but it conflicts with my other class."
+FB0308,2026-07-29,Student Lounge,I appreciate that the coffee cart in the student lounge added healthy options that students love.
+FB0309,2026-07-30,Cafeteria,"The complaints counter improved a lot this semester, and I hope it stays this way."
+FB0310,2026-07-30,Campus Entrance,"The area around the guard house is so dirty that students are avoiding the area, and it affects everyone who comes in through the gate."
+FB0311,2026-07-30,Classroom,"Honestly, the exam schedule in the classroom does not fit the number of students who need it."
+FB0312,2026-07-30,Classroom,I want to thank the staff because the whiteboard tray in the classroom is spotless every morning.
+FB0313,2026-07-30,Classroom,"The Wi-Fi signal in Room 204 is fast and stable now, great for research."
+FB0314,2026-07-30,Parking Area,"I appreciate that the motorcycle parking section works smoothly even during rush hour, which really helps students."
+FB0315,2026-07-30,Parking Area,"I want to thank the staff because the parking sensor is in great condition thanks to the maintenance team, and I hope it stays this way."
+FB0316,2026-07-30,Parking Area,I want to thank the staff because the parking slot tracking app is now easy to use and quick.
+FB0317,2026-07-30,Student Lounge,Please look into this: the glass door is unsafe and needs to be fixed soon.
+FB0318,2026-07-31,Computer Laboratory,"The wired network in the back row in the computer lab occasionally lags for a moment, not a big problem."
+FB0319,2026-07-31,Library,The consultation schedule with librarians is well organized and easy to follow.
+FB0320,2026-07-31,Library,"To be fair, the wireless network in the periodicals section connects quickly, but the speed for video calls is poor."
+FB0321,2026-07-31,Restroom,Good news: the reporting process for issues in the restroom was quick and helpful when I needed assistance.
+FB0322,2026-07-31,Student Lounge,"I want to thank the staff because the lounge counter was fixed quickly, thanks to the facilities office."
+FB0323,2026-07-31,Wi-Fi Areas,"Just a heads up that the humidity at the outdoor benches in the Wi-Fi area could be better, though it does not bother me much."
+FB0324,2026-08-03,Cafeteria,"The floor near the counter at the cafeteria is filthy and unsanitary, which is a health risk."
+FB0325,2026-08-03,Campus Entrance,"I appreciate that the guard house at the campus entrance was fixed quickly, thanks to the facilities office."
+FB0326,2026-08-03,Campus Entrance,Many of us have noticed that the coffee stall beside the guard house could offer a few more choices.
+FB0327,2026-08-03,Library,"Honestly, the book reservation system in the library does not save changes properly, and it disrupts everyone working in the library."
+FB0328,2026-08-03,Restroom,The lighting inside the restroom was recently improved and I feel much safer.
+FB0329,2026-08-04,Library,Good news: the public desktop computer near the window was replaced with a new one that works perfectly.
+FB0330,2026-08-04,Library,Please look into this: the emergency exit on the ground floor in the library is a serious hazard and someone could get badly hurt.
+FB0331,2026-08-04,Library,"Please look into this: the online journal access has been unusable for days, so nobody can submit requirements online."
+FB0332,2026-08-04,Parking Area,The vehicle sticker registration system in the parking area failed during the exam and erased our answers.
+FB0333,2026-08-05,Campus Entrance,I would like to report that the visitor registration system at the campus entrance shows an annoying pop-up every time I open it.
+FB0334,2026-08-05,Classroom,"To be fair, the announcement process solved my problem, but I had to visit three times."
+FB0335,2026-08-05,Computer Laboratory,The equipment borrowing counter has friendly staff who solved my problem right away.
+FB0336,2026-08-05,Parking Area,"The parking slot allocation is well managed, but it is too small for the number of students."
+FB0337,2026-08-05,Restroom,Just a heads up that the flush valve broke down in the middle of exam week and there is no replacement.
+FB0338,2026-08-06,Parking Area,"Honestly, the drop-off zone in the parking area is better organized, but still crowded at 7 am."
+FB0339,2026-08-06,Restroom,"Honestly, the soap dispenser in the restroom has a small crack that does not affect use yet."
+FB0340,2026-08-06,Student Lounge,"The coffee cart has a very long line that takes more than 20 minutes, and it makes the lounge hard to enjoy between classes."
+FB0341,2026-08-06,Wi-Fi Areas,"I would like to report that the cable run along the walkway in the Wi-Fi area could be safer, but nothing has happened so far."
+FB0342,2026-08-07,Student Lounge,"For your information, the water dispenser is scheduled for replacement next month."
+FB0343,2026-08-10,Cafeteria,"Just a heads up that the air quality near the kitchen at the cafeteria reaches dangerous levels, and some students felt dizzy or faint."
+FB0344,2026-08-10,Cafeteria,"Many of us have noticed that the snack stall at the cafeteria was found with insects in the food, which is a serious hygiene problem."
+FB0345,2026-08-10,Cafeteria,The rice bowl station serves cold food and small portions for the price.
+FB0346,2026-08-10,Campus Entrance,"FYI, the pedestrian walkway at the campus entrance is included in the maintenance schedule for next month."
+FB0347,2026-08-10,Campus Entrance,"Honestly, the tricycle terminal near the gate works smoothly even during rush hour, which really helps students."
+FB0348,2026-08-10,Classroom,"FYI, the internet connection during online quizzes in the classroom was checked by the IT staff during their regular inspection."
+FB0349,2026-08-10,Library,"Just a heads up that the Wi-Fi signal on the second floor is a little slow sometimes, but still usable."
+FB0350,2026-08-10,Library,"The photocopier near the entrance is a bit loose and wobbly, but usable."
+FB0351,2026-08-10,Restroom,I appreciate that the soap dispenser in the restroom is in great condition thanks to the maintenance team.
+FB0352,2026-08-10,Restroom,"Just a heads up that the toilet area in the restroom has a few stains, but nothing serious."
+FB0353,2026-08-10,Restroom,The odor level in the restroom is pleasant and perfect for studying.
+FB0354,2026-08-10,Student Lounge,"Honestly, the lost and found box process in the student lounge is helpful but often closed during lunch."
+FB0355,2026-08-10,Wi-Fi Areas,"FYI, the access point on the quadrangle was moved to a different spot this week."
+FB0356,2026-08-10,Wi-Fi Areas,"Honestly, the noise level on the walkway is pleasant and perfect for studying."
+FB0357,2026-08-11,Classroom,"Honestly, the online learning platform used in class in the classroom made my request so much faster this week, and I hope it stays this way."
+FB0358,2026-08-11,Wi-Fi Areas,The humidity at the outdoor benches is fine in the morning but gets uncomfortable in the afternoon.
+FB0359,2026-08-12,Campus Entrance,"Honestly, the garbage spot near the gate is spotless every morning."
+FB0360,2026-08-12,Campus Entrance,"I appreciate that the streetlight near the gate was fixed right after we reported it, and I hope it stays this way."
+FB0361,2026-08-12,Computer Laboratory,"The lab activity plan could be a bit clearer, but it is manageable."
+FB0362,2026-08-12,Library,I would like to report that the library catalog website failed during the exam and erased our answers.
+FB0363,2026-08-12,Parking Area,Just wanted to share that the drop-off zone in the parking area works smoothly even during rush hour.
+FB0364,2026-08-12,Student Lounge,"Please look into this: the wall-mounted TV works only some of the time, so students go elsewhere to rest."
+FB0365,2026-08-12,Wi-Fi Areas,"Honestly, the floor of the covered walkway in the Wi-Fi area was fixed, though a small hazard remains."
+FB0366,2026-08-12,Wi-Fi Areas,Please look into this: the IT help desk booth in the Wi-Fi area is often closed or unattended when we need help.
+FB0367,2026-08-13,Cafeteria,I appreciate that the floor near the counter is well maintained and secure.
+FB0368,2026-08-13,Cafeteria,"Mixed feelings: the food serving counter looks better than before, but the corners are still dusty."
+FB0369,2026-08-13,Campus Entrance,"Many of us have noticed that the tricycle terminal near the gate often causes delays, making students late for class."
+FB0370,2026-08-13,Classroom,The exam schedule in the classroom has a small conflict that can be worked around.
+FB0371,2026-08-13,Library,Just a heads up that the study table surface is covered in garbage and pests are starting to appear.
+FB0372,2026-08-13,Parking Area,"I would like to report that the shuttle pickup point in the parking area is very congested during the morning rush, and it makes coming to campus stressful."
+FB0373,2026-08-13,Restroom,"FYI, the sink area is cleaned every day at 5 pm according to the schedule."
+FB0374,2026-08-13,Student Lounge,Just a heads up that the tile flooring has a minor issue that should be checked.
+FB0375,2026-08-13,Wi-Fi Areas,"The internet speed at the outdoor benches in the Wi-Fi area keeps disconnecting every few minutes, and it affects students who study outdoors."
+FB0376,2026-08-14,Cafeteria,"FYI, the announcement board process at the cafeteria moved to a new location as announced."
+FB0377,2026-08-14,Campus Entrance,Many of us have noticed that the pedestrian walkway has been closed for weeks because of serious damage.
+FB0378,2026-08-14,Computer Laboratory,The sign-in process is poorly organized and nobody knows who is in charge.
+FB0379,2026-08-14,Student Lounge,"For your information, the sandwich stand is open from 7 am to 4 pm on weekdays."
+FB0380,2026-08-17,Cafeteria,"Honestly, the gas stove area has good security, but the response is slow."
+FB0381,2026-08-17,Campus Entrance,Just a heads up that the road crossing at the gate is unsafe and needs to be fixed soon.
+FB0382,2026-08-17,Campus Entrance,The tricycle waiting arrangement at the gate is disorganized and wastes a lot of time.
+FB0383,2026-08-17,Computer Laboratory,"I would like to report that the lab session schedule does not fit the number of students who need it, so we cannot finish our exercises on time."
+FB0384,2026-08-17,Computer Laboratory,"The desk surface at the workstations in the computer lab is filthy and unsanitary, which is a health risk."
+FB0385,2026-08-17,Library,"The lost and found counter has unclear signage, a minor issue."
+FB0386,2026-08-17,Library,The tutoring schedule at the library is now clear and very convenient.
+FB0387,2026-08-17,Parking Area,I appreciate that the guard station help desk has friendly staff who solved my problem right away.
+FB0388,2026-08-17,Student Lounge,"I have both good and bad to say: the microwave corner is well cleaned, though the bins are not emptied often enough."
+FB0389,2026-08-18,Campus Entrance,"The air quality from vehicle exhaust at the campus entrance reaches dangerous levels, and some students felt dizzy or faint."
+FB0390,2026-08-18,Classroom,"FYI, the classroom door was rearranged as announced last week."
+FB0391,2026-08-18,Classroom,The ceiling projector is completely broken and nobody has fixed it since the start of the month.
+FB0392,2026-08-18,Library,"I have both good and bad to say: the tutoring schedule at the library is helpful, but there are too few sessions."
+FB0393,2026-08-18,Wi-Fi Areas,"Honestly, the noise level on the walkway has become unbearable and is affecting students' health."
+FB0394,2026-08-19,Classroom,The ceiling projector in the classroom was checked by the maintenance team this week.
+FB0395,2026-08-19,Library,"I have both good and bad to say: the printer beside the help desk works well when it works, but it often needs a restart."
+FB0396,2026-08-19,Restroom,Many of us have noticed that the stall lock is a serious hazard and someone could get badly hurt.
+FB0397,2026-08-19,Restroom,The notice posting process is poorly organized and nobody knows who is in charge.
+FB0398,2026-08-19,Wi-Fi Areas,"Honestly, the cable run along the walkway in the Wi-Fi area was fixed right after we reported it."
+FB0399,2026-08-20,Cafeteria,The snack stall at the cafeteria has a very long line that takes more than 20 minutes.
+FB0400,2026-08-20,Classroom,The online learning platform used in class in the classroom will be down for scheduled maintenance this weekend.
+FB0401,2026-08-20,Computer Laboratory,I have both good and bad to say: the Wi-Fi signal inside the lab works well near the entrance but drops further inside.
+FB0402,2026-08-20,Library,The ceiling above the periodicals section in the library was rearranged as announced last week.
+FB0403,2026-08-20,Parking Area,"Honestly, the parking lot pavement was fixed recently, though it still needs some work."
+FB0404,2026-08-20,Restroom,I would like to report that the restroom floor is dusty and untidy most days.
+FB0405,2026-08-20,Wi-Fi Areas,Just wanted to share that the account assistance window was quick and helpful when I needed assistance.
+FB0406,2026-08-21,Parking Area,The parking slot allocation was adjusted this week according to the posted notice.
+FB0407,2026-08-21,Restroom,"Just wanted to share that the trash bin corner is much cleaner than last semester, which really helps students."
+FB0408,2026-08-21,Restroom,The door latch is included in the safety checklist for this month.
+FB0409,2026-08-21,Student Lounge,"I have both good and bad to say: the charging locker app is easy to navigate, but it is very slow at peak times."
+FB0410,2026-08-24,Cafeteria,Please look into this: the suggestion box process at the cafeteria is often closed or unattended when we need help.
+FB0411,2026-08-24,Cafeteria,The humidity at the cafeteria gets worse every time the weather changes.
+FB0412,2026-08-24,Campus Entrance,The fruit stand outside the gate has a very long line that takes more than 20 minutes.
+FB0413,2026-08-24,Library,Many of us have noticed that the reservation arrangement for discussion rooms is often changed without enough notice.
+FB0414,2026-08-24,Library,The tutoring schedule at the library is not enough for our subjects.
+FB0415,2026-08-24,Parking Area,I want to thank the staff because the wall by the entrance ramp is much cleaner than last semester.
+FB0416,2026-08-24,Parking Area,The entrance barrier gate burned out and is now unusable.
+FB0417,2026-08-24,Restroom,"I have both good and bad to say: the notice posting process in the restroom solved my problem, but I had to visit three times."
+FB0418,2026-08-24,Wi-Fi Areas,I want to thank the staff because the charging bench was renovated and looks great.
+FB0419,2026-08-24,Wi-Fi Areas,"Just a heads up that the antenna mount above the bench in the Wi-Fi area has been reported before, but nothing was done."
+FB0420,2026-08-24,Wi-Fi Areas,The Wi-Fi login portal in the Wi-Fi area was updated and works much better than before.
+FB0421,2026-08-25,Cafeteria,I would like to report that the cashier terminal at the cafeteria is old and breaks down often.
+FB0422,2026-08-25,Campus Entrance,The street food cart by the entrance is a bit pricey but fine.
+FB0423,2026-08-25,Computer Laboratory,I want to thank the staff because the mouse and keyboard set at the corner station is in great condition thanks to the maintenance team.
+FB0424,2026-08-25,Parking Area,Many of us have noticed that the motorcycle parking section is completely blocked in the morning and students miss their first classes.
+FB0425,2026-08-25,Student Lounge,"I would like to report that the lounge sofa area has a small crack, but it is still okay to use."
+FB0426,2026-08-25,Student Lounge,"The study group arrangement helped me prepare for my exams much better, and I hope it stays this way."
+FB0427,2026-08-26,Cafeteria,I saw a notice that the electrical wiring near the refrigerator is included in the safety checklist for this month.
+FB0428,2026-08-26,Campus Entrance,"Just a heads up that the turnstile has a broken part that makes it hard to use, which is a poor first impression for visitors."
+FB0429,2026-08-26,Classroom,The humidity in the classroom is much better after the recent changes.
+FB0430,2026-08-26,Computer Laboratory,"Just a heads up that the computer in the third row in the computer lab has a broken part that makes it hard to use, and it disrupts our lab activities."
+FB0431,2026-08-26,Student Lounge,The lounge reservation system shows an annoying pop-up every time I open it.
+FB0432,2026-08-26,Wi-Fi Areas,I want to thank the staff because the router near the gym in the Wi-Fi area is in great condition thanks to the maintenance team.
+FB0433,2026-08-26,Wi-Fi Areas,"The campus network sign-in page has been down for days, so required tasks cannot be completed."
+FB0434,2026-08-27,Cafeteria,Good news: the internet connection near the counter at the cafeteria is much more reliable after the recent upgrade.
+FB0435,2026-08-27,Campus Entrance,Many of us have noticed that the visitor assistance process at the campus entrance is often closed or unattended when we need help.
+FB0436,2026-08-27,Campus Entrance,"The tricycle terminal near the gate is a bit far from the buildings, but okay."
+FB0437,2026-08-27,Computer Laboratory,"Honestly, the lab reservation system is now easy to use and quick."
+FB0438,2026-08-27,Computer Laboratory,"Honestly, the lighting level over the workstations is so bad that classes and studying are being disrupted."
+FB0439,2026-08-27,Computer Laboratory,I appreciate that the lab floor is spotless every morning.
+FB0440,2026-08-27,Student Lounge,"Honestly, the emergency exit in the student lounge has good security, but the response is slow."
+FB0441,2026-08-28,Cafeteria,"Honestly, the cashless payment system at the cafeteria takes a few extra clicks to do simple things."
+FB0442,2026-08-28,Cafeteria,Just a heads up that the water dispenser at the cafeteria is completely broken and nobody has fixed it since the start of the month.
+FB0443,2026-08-28,Campus Entrance,"I would like to report that the visitor registration system at the campus entrance has been down for days, so required tasks cannot be completed."
+FB0444,2026-08-28,Library,"Honestly, the barcode scanner at the circulation desk in the library works only some of the time, so many of us have to look for another place to study."
+FB0445,2026-08-28,Library,"Honestly, the internet connection at the reading tables in the library often shows no internet even when the device is connected."
+FB0446,2026-08-28,Parking Area,The car entry arrangement in the parking area was adjusted this week according to the posted notice.
+FB0447,2026-08-28,Restroom,"Honestly, the stall door in the restroom has been out of order for weeks, so students avoid using it."
+FB0448,2026-08-28,Student Lounge,"FYI, the exam review session schedule will start after the midterm exams."
+FB0449,2026-08-31,Campus Entrance,"Please look into this: the gate intercom is a bit loose and wobbly, but usable."
+FB0450,2026-08-31,Classroom,I would like to report that the department office window in the classroom is poorly organized and nobody knows who is in charge.
+FB0451,2026-08-31,Computer Laboratory,"Just a heads up that the lab table in the back row has been closed for weeks because of serious damage, and it disrupts our lab activities."
+FB0452,2026-08-31,Computer Laboratory,Please look into this: the fire extinguisher inside the lab has been unsafe for a while and needs attention.
+FB0453,2026-08-31,Wi-Fi Areas,Just a heads up that the outdoor antenna in the Wi-Fi area makes a strange noise but still works.
+FB0454,2026-08-31,Wi-Fi Areas,The account verification page for the network is now easy to use and quick.
+FB0455,2026-09-01,Cafeteria,The noise level at lunch is pleasant and perfect for studying.
+FB0456,2026-09-01,Campus Entrance,The jeepney drop-off area at the campus entrance saves us a lot of time now.
+FB0457,2026-09-01,Classroom,"The Wi-Fi signal in Room 204 occasionally lags for a moment, not a big problem."
+FB0458,2026-09-01,Library,"Mixed feelings: the e-book portal is easy to navigate, but it is very slow at peak times."
+FB0459,2026-09-01,Library,"The tutoring schedule at the library is well organized, but it is announced too late."
+FB0460,2026-09-01,Restroom,"For your information, the tile floor by the entrance was rearranged as announced last week."
+FB0461,2026-09-01,Restroom,Just wanted to share that the sink area was renovated and looks great.
+FB0462,2026-09-01,Wi-Fi Areas,Please look into this: the IT help desk booth in the Wi-Fi area gives confusing and inconsistent instructions.
+FB0463,2026-09-02,Campus Entrance,"Honestly, the shuttle service at the campus entrance left hundreds of students stranded this morning."
+FB0464,2026-09-02,Classroom,"The attendance system in the classroom has a confusing layout, but it still works."
+FB0465,2026-09-02,Classroom,The blackboard in the classroom is now comfortable and well-maintained.
+FB0466,2026-09-02,Computer Laboratory,"Many of us have noticed that the trash can area has a bad smell by the afternoon, and it disrupts our lab activities."
+FB0467,2026-09-02,Computer Laboratory,"Please look into this: the wired network in the back row in the computer lab keeps disconnecting every few minutes, and it disrupts our lab activities."
+FB0468,2026-09-02,Parking Area,"Honestly, the temperature under the shed gets worse every time the weather changes, so many of us arrive late."
+FB0469,2026-09-02,Parking Area,Just wanted to share that the car entry arrangement in the parking area works smoothly even during rush hour.
+FB0470,2026-09-02,Restroom,The reporting process for issues in the restroom has friendly staff who solved my problem right away.
+FB0471,2026-09-02,Student Lounge,Many of us have noticed that the drinks vending machine in the student lounge could offer a few more choices.
+FB0472,2026-09-02,Student Lounge,"The wireless network in the lounge corner occasionally lags for a moment, not a big problem."
+FB0473,2026-09-03,Campus Entrance,"Mixed feelings: the ID replacement window is friendly, but the waiting time is long."
+FB0474,2026-09-03,Campus Entrance,"The morning entry arrangement at the gate is well managed, but it is too small for the number of students."
+FB0475,2026-09-03,Campus Entrance,The snack stall near the gate changed its menu this week.
+FB0476,2026-09-03,Classroom,I want to thank the staff because the lecture schedule is now clear and very convenient.
+FB0477,2026-09-03,Computer Laboratory,Good news: the electrical wiring near the workstations was fixed right after we reported it.
+FB0478,2026-09-03,Computer Laboratory,I want to thank the staff because the lab activity plan is now clear and very convenient.
+FB0479,2026-09-03,Restroom,"I want to thank the staff because the flush valve in the restroom was replaced with a new one that works perfectly, and I hope it stays this way."
+FB0480,2026-09-04,Cafeteria,"I would like to report that the meal card balance checker does not save changes properly, which is frustrating during our short breaks."
+FB0481,2026-09-04,Campus Entrance,Many of us have noticed that the sidewalk at the gate is dusty and untidy most days.
+FB0482,2026-09-04,Classroom,"Just a heads up that the window frame has been closed for weeks because of serious damage, which affects the whole class."
+FB0483,2026-09-04,Classroom,"Many of us have noticed that the ceiling fan mounting in the classroom has been reported before, but nothing was done."
+FB0484,2026-09-04,Library,I would like to report that the carpet near the entrance could use a quick wipe now and then.
+FB0485,2026-09-04,Parking Area,"I would like to report that the covered parking shed has been closed for weeks because of serious damage, which is a daily headache."
+FB0486,2026-09-04,Restroom,"Please look into this: the stall lock in the restroom is risky when it is crowded or rainy, which really needs attention."
+FB0487,2026-09-04,Student Lounge,I want to thank the staff because the extension cord arrangement was fixed right after we reported it.
+FB0488,2026-09-04,Student Lounge,I would like to report that the snack vending corner serves cold food and small portions for the price.
+FB0489,2026-09-04,Student Lounge,The lounge ceiling has been out of order for weeks.
+FB0490,2026-09-04,Student Lounge,"The wireless network in the lounge corner has been unusable for days, so nobody can submit requirements online."
+FB0491,2026-09-07,Cafeteria,"I have both good and bad to say: the announcement board process at the cafeteria solved my problem, but I had to visit three times."
+FB0492,2026-09-07,Cafeteria,"Many of us have noticed that the tray return station at the cafeteria has some small scraps of paper, a minor issue."
+FB0493,2026-09-07,Campus Entrance,"The jeepney drop-off area at the campus entrance is a great help on rainy days, but it is always full."
+FB0494,2026-09-07,Classroom,"Please look into this: the noise level from the hallway in the classroom reaches dangerous levels, and some students felt dizzy or faint."
+FB0495,2026-09-07,Library,Good news: the second-floor reading room is now comfortable and well-maintained.
+FB0496,2026-09-07,Parking Area,"Please look into this: the online parking permit page often shows errors when I try to log in, which is a daily headache."
+FB0497,2026-09-07,Restroom,The toilet area in the restroom is covered in garbage and pests are starting to appear.
+FB0498,2026-09-07,Student Lounge,The sandwich stand changed its menu this week.
+FB0499,2026-09-07,Wi-Fi Areas,The heat in the open quadrangle is being monitored as part of the sustainability program.
+FB0500,2026-09-08,Computer Laboratory,"Mixed feelings: the laboratory door looks great after the renovation, but some parts are still unfinished."
+FB0501,2026-09-08,Library,"Just a heads up that the consultation schedule with librarians keeps changing at the last minute, which is ruining our preparation."
+FB0502,2026-09-08,Parking Area,Mixed feelings: the vehicle sticker registration system in the parking area works fine on my laptop but keeps failing on my phone.
+FB0503,2026-09-08,Parking Area,The motorcycle shelter is in bad condition and uncomfortable to use.
+FB0504,2026-09-08,Student Lounge,"Just a heads up that the exam review session schedule in the student lounge does not fit the number of students who need it, which defeats the purpose of the lounge."
+FB0505,2026-09-08,Student Lounge,The student council desk in the student lounge takes far too long to respond to requests.
+FB0506,2026-09-08,Wi-Fi Areas,"Honestly, the outdoor antenna is completely broken and nobody has fixed it since the start of the month."
+FB0507,2026-09-09,Cafeteria,Just noting that the online meal ordering app at the cafeteria was updated to a new version according to the announcement.
+FB0508,2026-09-09,Computer Laboratory,"Honestly, the room temperature is good in some areas and bad in others."
+FB0509,2026-09-09,Wi-Fi Areas,"Mixed feelings: the internet speed at the outdoor benches in the Wi-Fi area is stable most of the time, though it sometimes fails during peak hours."
+FB0510,2026-09-10,Cafeteria,"Many of us have noticed that the exit path during the lunch rush at the cafeteria already caused an injury this week, so many students end up going off campus."
+FB0511,2026-09-10,Cafeteria,Many of us have noticed that the noodle station served spoiled food and several students had stomach aches afterwards.
+FB0512,2026-09-10,Campus Entrance,Good news: the coffee stall beside the guard house added healthy options that students love.
+FB0513,2026-09-10,Campus Entrance,The gate intercom is in great condition thanks to the maintenance team.
+FB0514,2026-09-10,Campus Entrance,The sidewalk is included in the safety checklist for this month.
+FB0515,2026-09-10,Classroom,The assignment deadline arrangement in the classroom was updated according to the latest announcement.
+FB0516,2026-09-10,Classroom,"The whiteboard tray in the classroom has a few stains, but nothing serious."
+FB0517,2026-09-10,Restroom,I would like to report that the stall door in the restroom is damaged and needs repair.
+FB0518,2026-09-10,Student Lounge,The microwave corner in the student lounge could use a quick wipe now and then.
+FB0519,2026-09-10,Wi-Fi Areas,Please look into this: the campus network sign-in page is slow and freezes when several students use it.
+FB0520,2026-09-10,Wi-Fi Areas,"The campus network sign-in page has a confusing layout, but it still works."
+FB0521,2026-09-11,Campus Entrance,The lost and found counter at the campus entrance will have shorter hours during the holiday break.
+FB0522,2026-09-11,Computer Laboratory,"FYI, the power strip arrangement under the tables was reviewed by the safety officer this week."
+FB0523,2026-09-11,Computer Laboratory,Just noting that the lighting level over the workstations in the computer lab is scheduled for review by the campus committee.
+FB0524,2026-09-11,Computer Laboratory,The projector at the front of the lab is scheduled for replacement next month.
+FB0525,2026-09-11,Library,The reservation arrangement for discussion rooms has a small conflict that can be worked around.
+FB0526,2026-09-11,Parking Area,I want to thank the staff because the heat from the pavement in the parking area has improved a lot and feels comfortable now.
+FB0527,2026-09-11,Student Lounge,"I have both good and bad to say: the electric fan in the student lounge was repaired last week, though the same problem appeared again."
+FB0528,2026-09-11,Wi-Fi Areas,I appreciate that the outdoor bench area in the Wi-Fi area was renovated and looks great.
+FB0529,2026-09-14,Cafeteria,"Just a heads up that the noodle station has raised prices again without any improvement, so many students end up going off campus."
+FB0530,2026-09-14,Classroom,"Please look into this: the electrical outlet near the front in the classroom is a little worn, but no one has been hurt."
+FB0531,2026-09-14,Classroom,The classroom quiz app does not save changes properly.
+FB0532,2026-09-14,Classroom,The classroom temperature was measured by the facilities office this week.
+FB0533,2026-09-14,Classroom,"The connection for online class sessions in the classroom becomes unreliable whenever many students are online, which affects the whole class."
+FB0534,2026-09-14,Classroom,The fire exit is included in the safety checklist for this month.
+FB0535,2026-09-14,Parking Area,"I have both good and bad to say: the car entry arrangement in the parking area is better organized, but still crowded at 7 am."
+FB0536,2026-09-14,Student Lounge,The trash bin area in the student lounge is cleaned every day at 5 pm according to the schedule.
+FB0537,2026-09-15,Campus Entrance,Just a heads up that the metal detector at the campus entrance broke down in the middle of exam week and there is no replacement.
+FB0538,2026-09-15,Campus Entrance,The heat at the gate has improved a lot and feels comfortable now.
+FB0539,2026-09-15,Computer Laboratory,Just a heads up that the practical exam arrangement is so disorganized that many students may miss required exams.
+FB0540,2026-09-15,Computer Laboratory,Just noting that the keyboard area at the stations in the computer lab was inspected by the sanitation team this week.
+FB0541,2026-09-15,Library,I want to thank the staff because the fire extinguisher near the entrance is well maintained and secure.
+FB0542,2026-09-15,Library,"Just wanted to share that the reading area floor is always clean thanks to the cleaning staff, and I hope it stays this way."
+FB0543,2026-09-15,Student Lounge,Please look into this: the peer tutoring schedule in the student lounge does not fit the number of students who need it.
+FB0544,2026-09-15,Student Lounge,"The drinks vending machine in the student lounge is often sold out by early afternoon, so students go elsewhere to rest."
+FB0545,2026-09-16,Library,"Just a heads up that the humidity around the book stacks could be better, though it does not bother me much."
+FB0546,2026-09-16,Library,"Many of us have noticed that the electrical wiring behind the charging tables in the library has been reported before, but nothing was done."
+FB0547,2026-09-16,Library,"Many of us have noticed that the emergency exit on the ground floor could be safer, but nothing has happened so far."
+FB0548,2026-09-17,Cafeteria,Good news: the online meal ordering app at the cafeteria made my request so much faster this week.
+FB0549,2026-09-17,Classroom,Many of us have noticed that the lost and found counter of the building takes far too long to respond to requests.
+FB0550,2026-09-17,Computer Laboratory,"The practical exam arrangement is well organized, but it is announced too late."
+FB0551,2026-09-17,Library,"For your information, the suggestion box process in the library is open from 8 am to 5 pm on weekdays."
+FB0552,2026-09-17,Restroom,"The restroom ceiling has been closed for weeks because of serious damage, and it makes using the restroom uncomfortable."
+FB0553,2026-09-17,Wi-Fi Areas,"For your information, the charging bench will be closed for two hours on Friday for inspection."
+FB0554,2026-09-17,Wi-Fi Areas,"Just a heads up that the shaded seating near the quadrangle is a little worn, but still usable."
+FB0555,2026-09-18,Cafeteria,"The rice bowl station serves good meals, but the seating is limited."
+FB0556,2026-09-18,Campus Entrance,"Please look into this: the main gate needs repainting, but it is not urgent."
+FB0557,2026-09-18,Classroom,The grade viewing portal in the classroom works fine on my laptop but keeps failing on my phone.
+FB0558,2026-09-18,Computer Laboratory,The power strip arrangement under the tables in the computer lab poses an immediate danger and should be closed until fixed.
+FB0559,2026-09-18,Library,"For your information, the online renewal page was updated to a new version according to the announcement."
+FB0560,2026-09-18,Parking Area,The sticker claiming window is poorly organized and nobody knows who is in charge.
+FB0561,2026-09-18,Restroom,"Honestly, the hand dryer in the restroom works only some of the time, so students avoid using it."
+FB0562,2026-09-18,Student Lounge,Just noting that the suggestion box process in the student lounge will have shorter hours during the holiday break.
+FB0563,2026-09-18,Student Lounge,Please look into this: the sofa area in the student lounge is so dirty that students are avoiding the area.
+FB0564,2026-09-18,Wi-Fi Areas,"Honestly, the account assistance window in the Wi-Fi area has unclear signage, a minor issue."
+FB0565,2026-09-18,Wi-Fi Areas,"Honestly, the network cabinet was replaced with a new one that works perfectly."
+FB0566,2026-09-18,Wi-Fi Areas,"To be fair, the connection near the gymnasium in the Wi-Fi area works well near the entrance but drops further inside."

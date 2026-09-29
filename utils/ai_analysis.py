@@ -23,10 +23,16 @@ clear AIAnalysisError instead of crashing the app.
 import os
 import re
 import json
+import time
+import random
+import threading
+import hashlib
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import pandas as pd
 from huggingface_hub import InferenceClient
 
+from utils.local_classifier import local_classify
 from utils.datasets import build_datasets, datasets_to_text, is_analyzed, SEVERITY_WEIGHT
 
 # Allowed values the AI must choose from. Keeping these as constants means
@@ -50,6 +56,10 @@ MODEL_NAME = MODEL_CHAIN[0]
 # Index of the model in MODEL_CHAIN that last worked, so we don't keep
 # retrying a model that already failed on every single row.
 _active_model_index = 0
+
+
+_TRANSIENT_MARKERS = ("429", "rate limit", "too many requests", "502", "503", "504", "timeout",
+                      "timed out", "overloaded", "temporarily", "connection")
 
 
 class AIAnalysisError(Exception):
@@ -102,24 +112,33 @@ def _chat(client: InferenceClient, system: str, user: str,
         model = MODEL_CHAIN[idx]
         # Qwen3 is a "thinking" model - /no_think keeps answers fast and short.
         user_msg = user + " /no_think" if "Qwen3" in model else user
-        try:
-            response = client.chat_completion(
-                model=model,
-                messages=[
-                    {"role": "system", "content": system},
-                    *(history or []),
-                    {"role": "user", "content": user_msg},
-                ],
-                max_tokens=max_tokens,
-                temperature=temperature,
-            )
-            text = _clean_model_text(response.choices[0].message.content)
-            if not text:
-                raise ValueError("empty response")
-            _active_model_index = idx  # remember the working model
-            return text
-        except Exception as exc:  # network, auth, gated model, rate limit, etc.
-            errors.append(f"{model}: {exc}")
+        for attempt in range(3):
+            try:
+                response = client.chat_completion(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": system},
+                        *(history or []),
+                        {"role": "user", "content": user_msg},
+                    ],
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                )
+                text = _clean_model_text(response.choices[0].message.content)
+                if not text:
+                    raise ValueError("empty response")
+                _active_model_index = idx  # remember the working model
+                return text
+            except Exception as exc:  # network, auth, gated model, rate limit, etc.
+                msg = str(exc).lower()
+                transient = any(k in msg for k in _TRANSIENT_MARKERS)
+                if transient and attempt < 2:
+                    # Rate-limited / busy: wait briefly and retry the SAME model instead of
+                    # falling through to a weaker one (important when many requests run in parallel).
+                    time.sleep(1.5 * (2 ** attempt) + random.random())
+                    continue
+                errors.append(f"{model}: {exc}")
+                break
 
     raise AIAnalysisError("All Hugging Face models failed. " + " | ".join(errors))
 
@@ -155,18 +174,18 @@ Base your analysis only on the feedback text given. Do not invent details that a
 implied by the text."""
 
 
-def _build_fallback_result(error_message: str) -> dict:
-    """A safe, clearly-marked placeholder result used when the AI call fails."""
-    return {
-        "sentiment": "Neutral",
-        "category": "Other",
-        "severity": "Low",
-        "keywords": [],
-        "main_issue": "Analysis unavailable",
-        "summary": "This feedback could not be analyzed automatically.",
-        "suggested_action": "Review manually.",
-        "analysis_error": error_message,
+def _build_fallback_result(error_message: str, text: str = "") -> dict:
+    """
+    Result used when the AI call fails. Instead of a useless Neutral/Other/Low placeholder it
+    classifies the text with simple keyword rules (utils/local_classifier.py), so filters and
+    charts still work. `analysis_error` records why the AI was not used.
+    """
+    result = local_classify(text) if text and str(text).strip() else {
+        "sentiment": "Neutral", "category": "Other", "severity": "Low", "keywords": [],
+        "main_issue": "None", "summary": "Empty feedback.", "suggested_action": "No action needed",
     }
+    result["analysis_error"] = error_message
+    return result
 
 
 def analyze_feedback(client: InferenceClient, feedback_text: str) -> dict:
@@ -177,24 +196,24 @@ def analyze_feedback(client: InferenceClient, feedback_text: str) -> dict:
     the whole batch.
     """
     if not feedback_text or not str(feedback_text).strip():
-        return _build_fallback_result("Empty feedback text.")
+        return _build_fallback_result("Empty feedback text.", feedback_text)
 
     try:
         raw_content = _chat(
             client,
             system=ANALYSIS_SYSTEM_PROMPT,
             user=f"Feedback: {feedback_text}",
-            max_tokens=400,
+            max_tokens=300,
             temperature=0.1,
         )
         result = _extract_json(raw_content)
     except json.JSONDecodeError:
-        return _build_fallback_result("AI returned an invalid (non-JSON) response.")
+        return _build_fallback_result("AI returned an invalid (non-JSON) response.", feedback_text)
     except Exception as exc:  # covers network errors, auth errors, rate limits, etc.
-        return _build_fallback_result(f"API error: {exc}")
+        return _build_fallback_result(f"API error: {exc}", feedback_text)
 
     if not isinstance(result, dict):
-        return _build_fallback_result("AI returned an unexpected response format.")
+        return _build_fallback_result("AI returned an unexpected response format.", feedback_text)
 
     # --- Validate / sanitize the AI's response before trusting it ---
     if result.get("sentiment") not in VALID_SENTIMENTS:
@@ -214,25 +233,118 @@ def analyze_feedback(client: InferenceClient, feedback_text: str) -> dict:
     return result
 
 
+# ---------------------------------------------------------------------------
+# Fast bulk analysis: parallel requests + on-disk cache
+# ---------------------------------------------------------------------------
+# Number of feedback rows analyzed at the same time. Raise it (e.g. 8-12) if your Hugging Face
+# plan allows, lower it (e.g. 2) if you see rate-limit errors. Override with the ANALYSIS_WORKERS env var.
+ANALYSIS_WORKERS = max(1, int(os.getenv("ANALYSIS_WORKERS", "4")))
+CACHE_PATH = os.path.join(".cache", "analysis_cache.json")
+
+# If the API says "no credits / bad token / no permission", every further call would fail too.
+# After such an error the remaining rows go straight to the local keyword classifier (fast).
+_HARD_FAILURE_MARKERS = ("402", "401", "403", "payment required", "credit", "depleted", "unauthorized",
+                         "forbidden", "invalid token", "invalid credentials", "permission", "not authorized")
+_api_disabled = threading.Event()
+_api_disabled_reason: list = []
+
+
+def _cache_key(text: str) -> str:
+    """Cache key = prompt + feedback text, so editing the prompt automatically invalidates old results."""
+    return hashlib.sha1((ANALYSIS_SYSTEM_PROMPT + "|" + text).encode("utf-8")).hexdigest()
+
+
+def _load_cache() -> dict:
+    try:
+        with open(CACHE_PATH, encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_cache(cache: dict) -> None:
+    try:
+        os.makedirs(os.path.dirname(CACHE_PATH), exist_ok=True)
+        tmp = CACHE_PATH + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(cache, f)
+        os.replace(tmp, CACHE_PATH)
+    except Exception:
+        pass  # caching is only an optimization - never break the analysis because of it
+
+
 def analyze_dataframe(df: pd.DataFrame, progress_callback=None) -> pd.DataFrame:
     """
     Run analyze_feedback() on every row of a cleaned feedback DataFrame and
     return a new DataFrame with the extracted columns appended.
 
-    progress_callback, if given, is called with (current_index, total_rows)
-    after each row so the Streamlit UI can show a progress bar.
+    Speed-ups compared with the simple one-by-one loop:
+      - rows are analyzed in parallel (ANALYSIS_WORKERS threads)
+      - identical feedback text is only sent once
+      - successful results are cached on disk, so re-running Analyze Feedback
+        (or restarting the app) only pays for rows it has not seen before
+
+    progress_callback, if given, is called with (done_rows, total_rows) from the
+    calling thread so the Streamlit progress bar keeps working.
     """
-    client = get_client()  # raises AIAnalysisError early if no API key at all
+    get_client()  # raises AIAnalysisError early if no API key at all
+    token = get_hf_token()
 
-    results = []
-    total = len(df)
-    for i, row in enumerate(df.itertuples(index=False), start=1):
-        analysis = analyze_feedback(client, getattr(row, "feedback", ""))
-        results.append(analysis)
-        if progress_callback:
-            progress_callback(i, total)
+    texts = [str(t) if t is not None else "" for t in df["feedback"].tolist()]
+    total = len(texts)
+    cache = _load_cache()
 
-    analysis_df = pd.DataFrame(results)
+    results: dict[str, dict] = {}          # cache key -> analysis dict
+    pending: dict[str, str] = {}           # cache key -> text still to analyze (deduplicated)
+    for text in texts:
+        key = _cache_key(text)
+        if key in results or key in pending:
+            continue
+        if key in cache:
+            results[key] = cache[key]
+        else:
+            pending[key] = text
+
+    # Progress counts ROWS, so rows served from cache/duplicates are "done" immediately.
+    done = sum(1 for t in texts if _cache_key(t) in results)
+    if progress_callback:
+        progress_callback(done, total)
+
+    _api_disabled.clear()
+    _api_disabled_reason.clear()
+
+    def _work(text: str) -> dict:
+        if _api_disabled.is_set():
+            return _build_fallback_result(f"AI skipped after an earlier fatal API error: {_api_disabled_reason[0]}", text)
+        # One client per task: cheap to create and avoids sharing a session between threads.
+        result = analyze_feedback(InferenceClient(api_key=token, timeout=120), text)
+        err = str(result.get("analysis_error") or "")
+        if err and any(m in err.lower() for m in _HARD_FAILURE_MARKERS):
+            if not _api_disabled.is_set():
+                _api_disabled_reason.append(err[:300])
+                _api_disabled.set()
+        return result
+
+    if pending:
+        workers = min(ANALYSIS_WORKERS, len(pending))
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = {pool.submit(_work, text): key for key, text in pending.items()}
+            for fut in as_completed(futures):
+                key = futures[fut]
+                try:
+                    analysis = fut.result()
+                except Exception as exc:  # analyze_feedback should not raise, but never lose the batch
+                    analysis = _build_fallback_result(f"Unexpected error: {exc}", pending[key])
+                results[key] = analysis
+                if not analysis.get("analysis_error"):
+                    cache[key] = analysis           # only cache real results, not placeholders
+                done += sum(1 for t in texts if _cache_key(t) == key)
+                if progress_callback:
+                    progress_callback(min(done, total), total)
+        _save_cache(cache)
+
+    analysis_df = pd.DataFrame([dict(results[_cache_key(t)]) for t in texts])
     # Join keywords list into a readable comma-separated string for display/export
     if "keywords" in analysis_df.columns:
         analysis_df["keywords"] = analysis_df["keywords"].apply(
